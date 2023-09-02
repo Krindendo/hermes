@@ -1,17 +1,26 @@
-import { db, tableCreator } from "@hermes/db";
+//import { db, tableCreator } from "@hermes/db";
 
-import { env } from "./env.mjs";
+//import { env } from "./env.mjs";
 
 export interface Session {
   user: {
     id: string;
+    name: string;
   };
 }
 
-export function GET() {}
+export function GET() {
+  return "";
+}
 
-export function POST() {}
+export function POST() {
+  return "";
+}
 
-export function auth() {
-  return { user: { id: "test" } } as Session;
+export async function auth(callback?: (req: Request) => Promise<Response>) {
+  await new Promise((resolveInner) => {
+    setTimeout(resolveInner, 1000);
+  });
+  console.log("callback", callback);
+  return { user: { name: "test" } } as Session;
 }
