@@ -207,3 +207,21 @@ Learn more about the power of Turborepo:
 - [Scoped Tasks](https://turborepo.org/docs/core-concepts/scopes)
 - [Configuration Options](https://turborepo.org/docs/reference/configuration)
 - [CLI Usage](https://turborepo.org/docs/reference/command-line-reference)
+
+## Zamisao projekta:
+
+Da bi se ulogovao na sajt preko pretrazivaca,
+potrebno je prvo da se otvori aplikacija preko telefona.
+Zatim je potrebno da korisnik unese email.
+Nakon unetog email-a, korisniku se na telefon salje notifikacija preko kojeg ce omoguciti da zavrsi logovanje.
+Nakon prihvatanja, pretrazivac ce otvoriti dashboard stranicu.
+
+### logovanje preko telefona
+
+Za logovanje preko telefona je nesto drugacije. Korisnik ce prvo uneti email, zatim ce mu na email stici poruka sa kratkotrajnom sifru.
+
+Preko telefona je moguce zabraniti logovanje preko browser-a
+
+### Registracija
+
+Registracija je moguca samo preko mobilnog telefona i to tako sto ce da se unese email. Zatim ce na email stici poruka sa linkom. Ukoliko korisnik u roku od 5 minuta udje na taj link, smatrace se da korisnik postoji i napravice mu se nalog.

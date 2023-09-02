@@ -1,7 +1,7 @@
-import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
+// import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
 
-import { appRouter, createTRPCContext } from "@hermes/api";
-import { auth } from "@hermes/auth";
+// import { appRouter, createTRPCContext } from "@hermes/api";
+// import { auth } from "@hermes/auth";
 
 export const runtime = "edge";
 
@@ -24,19 +24,19 @@ export function OPTIONS() {
   return response;
 }
 
-const handler = auth(async (req) => {
-  const response = await fetchRequestHandler({
-    endpoint: "/api/trpc",
-    router: appRouter,
-    req,
-    createContext: () => createTRPCContext({ auth: undefined, req }),
-    onError({ error, path }) {
-      console.error(`>>> tRPC Error on '${path}'`, error);
-    },
-  });
+// const handler = auth(async (req) => {
+//   const response = await fetchRequestHandler({
+//     endpoint: "/api/trpc",
+//     router: appRouter,
+//     req,
+//     createContext: () => createTRPCContext({ auth: undefined, req }),
+//     onError({ error, path }) {
+//       console.error(`>>> tRPC Error on '${path}'`, error);
+//     },
+//   });
 
-  setCorsHeaders(response);
-  return response;
-});
+//   setCorsHeaders(response);
+//   return response;
+// });
 
-export { handler as GET, handler as POST };
+//export { handler as GET, handler as POST };
