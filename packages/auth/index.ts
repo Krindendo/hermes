@@ -9,18 +9,6 @@ export interface Session {
   };
 }
 
-export function GET() {
-  return "";
-}
-
-export function POST() {
-  return "";
-}
-
-export async function auth(callback?: (req: Request) => Promise<Response>) {
-  await new Promise((resolveInner) => {
-    setTimeout(resolveInner, 1000);
-  });
-  console.log("callback", callback);
+export async function auth() {
   return { user: { name: "test" } } as Session;
 }
