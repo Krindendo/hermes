@@ -5,6 +5,7 @@ import "~/styles/globals.css";
 
 import { headers } from "next/headers";
 
+import { siteConfig } from "~/config/site";
 import { TRPCReactProvider } from "./providers";
 
 const fontSans = Inter({
@@ -13,18 +14,21 @@ const fontSans = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Create T3 Turbo",
-  description: "Simple monorepo with shared backend for web & mobile apps",
+  title: siteConfig.name,
+  description: siteConfig.description,
   openGraph: {
-    title: "Create T3 Turbo",
-    description: "Simple monorepo with shared backend for web & mobile apps",
-    url: "https://create-t3-turbo.vercel.app",
-    siteName: "Create T3 Turbo",
-  },
-  twitter: {
-    card: "summary_large_image",
-    site: "@jullerino",
-    creator: "@jullerino",
+    title: siteConfig.name,
+    description: siteConfig.description,
+    type: "article",
+    url: siteConfig.url,
+    images: [
+      {
+        url: siteConfig.ogImage.toString(),
+        width: 1200,
+        height: 530,
+        alt: siteConfig.name,
+      },
+    ],
   },
 };
 

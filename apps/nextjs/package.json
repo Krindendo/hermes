@@ -16,6 +16,7 @@
     "@hermes/api": "^0.1.0",
     "@hermes/auth": "^0.1.0",
     "@hermes/db": "^0.1.0",
+    "@hermes/ui": "^0.1.0",
     "@t3-oss/env-nextjs": "^0.6.1",
     "@tanstack/react-query": "^4.33.0",
     "@tanstack/react-query-devtools": "^4.33.0",

@@ -1,6 +1,8 @@
-import { AuthShowcase } from "./_components/auth-showcase";
+"use client";
 
-export const runtime = "edge";
+import { Button } from "@hermes/ui";
+
+import { AuthShowcase } from "./_components/auth-showcase";
 
 export default function HomePage() {
   return (
@@ -10,6 +12,7 @@ export default function HomePage() {
           Create <span className="text-pink-400">T3</span> Turbo
         </h1>
         <AuthShowcase />
+        <Button>Test123</Button>
       </div>
     </main>
   );
