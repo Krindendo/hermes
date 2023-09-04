@@ -9,6 +9,6 @@ export interface Session {
   };
 }
 
-export async function auth() {
+export function auth() {
   return { user: { name: "test" } } as Session;
 }

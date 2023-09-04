@@ -165,10 +165,6 @@ Deploying your Expo application works slightly differently compared to Next.js o
 
 ---
 
-## Tips for yarn
-
-yarn workspace server add express-jwt
-
 ## Playlist
 
 https://www.youtube.com/watch?v=8a0iqYlZS3I
