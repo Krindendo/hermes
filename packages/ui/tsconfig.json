@@ -1,22 +1,13 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "Default",
+  "extends": "@hermes/tsconfig/base.json",
   "compilerOptions": {
-    "composite": false,
-    "declaration": true,
-    "declarationMap": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "inlineSources": false,
-    "isolatedModules": true,
-    "moduleResolution": "node",
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "preserveWatchOutput": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "jsx": "react-jsx"
+    "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json",
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./src*"],
+      "~/components*": ["./components*"]
+    }
   },
-  "include": ["src/**/*", "*.ts"],
-  "exclude": ["node_modules"]
+  "include": ["."],
+  "exclude": ["dist", "build", "node_modules"]
 }
