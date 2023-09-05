@@ -6,7 +6,6 @@
   "license": "MIT",
   "files": [
     "index.ts",
-    "globals.css",
     "postcss.js"
   ],
   "scripts": {

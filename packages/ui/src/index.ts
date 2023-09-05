@@ -1,4 +1,5 @@
-//import "./styles/globals.css"; Ne moze ovde da se stavi
+// styles
+import "./styles.css";
 
-export const name = "ui";
+// components
 export * from "./components/button";
