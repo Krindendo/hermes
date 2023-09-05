@@ -2,8 +2,8 @@ import { auth } from "@hermes/auth";
 
 import { SignIn, SignOut } from "~/components/auth";
 
-export async function AuthShowcase() {
-  const session = await auth();
+export function AuthShowcase() {
+  const session = auth();
 
   if (!session) {
     return (

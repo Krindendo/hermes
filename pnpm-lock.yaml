@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 importers:
 
   .:
@@ -144,11 +148,8 @@ importers:
         specifier: ^0.1.0
         version: link:../../packages/db
       '@hermes/ui':
-        specifier: ^0.1.1
-        version: link:../../packages/ui
-      '@hermes/ui2':
         specifier: ^0.1.0
-        version: link:../../packages/ui2
+        version: link:../../packages/ui
       '@t3-oss/env-nextjs':
         specifier: ^0.6.1
         version: 0.6.1(typescript@5.2.2)(zod@3.22.2)
@@ -345,9 +346,6 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.0.2(@types/react@18.2.21)(react@18.2.0)
-      autoprefixer:
-        specifier: ^10.4.15
-        version: 10.4.15(postcss@8.4.26)
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.0
@@ -357,9 +355,6 @@ importers:
       lucide-react:
         specifier: ^0.274.0
         version: 0.274.0(react@18.2.0)
-      react:
-        specifier: 18.2.0
-        version: 18.2.0
       tailwind-merge:
         specifier: ^1.14.0
         version: 1.14.0
@@ -385,6 +380,9 @@ importers:
       '@types/react':
         specifier: ^18.2.21
         version: 18.2.21
+      autoprefixer:
+        specifier: ^10.4.15
+        version: 10.4.15(postcss@8.4.26)
       eslint:
         specifier: ^8.48.0
         version: 8.48.0
@@ -394,27 +392,12 @@ importers:
       prettier:
         specifier: ^3.0.2
         version: 3.0.2
+      react:
+        specifier: 18.2.0
+        version: 18.2.0
       tsup:
         specifier: ^7.2.0
         version: 7.2.0(postcss@8.4.26)(typescript@5.2.2)
-      typescript:
-        specifier: ^5.2.2
-        version: 5.2.2
-
-  packages/ui2:
-    devDependencies:
-      '@hermes/eslint-config':
-        specifier: 0.2.0
-        version: link:../../tooling/eslint
-      '@hermes/prettier-config':
-        specifier: ^0.1.0
-        version: link:../../tooling/prettier
-      '@hermes/tsconfig':
-        specifier: ^0.1.0
-        version: link:../../tooling/typescript
-      eslint:
-        specifier: ^8.48.0
-        version: 8.48.0
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
@@ -4128,7 +4111,6 @@ packages:
       picocolors: 1.0.0
       postcss: 8.4.26
       postcss-value-parser: 4.2.0
-    dev: false
 
   /available-typed-arrays@1.0.5:
     resolution: {integrity: sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==}
@@ -6312,7 +6294,6 @@ packages:
 
   /fraction.js@4.2.1:
     resolution: {integrity: sha512-/KxoyCnPM0GwYI4NN0Iag38Tqt+od3/mLuguepLgCAKPn0ZhC544nssAW0tG2/00zXEYl9W+7hwAIpLHo6Oc7Q==}
-    dev: false
 
   /freeport-async@2.0.0:
     resolution: {integrity: sha512-K7od3Uw45AJg00XUmy15+Hae2hOcgKcmN3/EF6Y7i01O0gaqiRx8sUSpsb9+BRNL8RPBrhzPsVfy8q9ADlJuWQ==}
@@ -7729,7 +7710,6 @@ packages:
     hasBin: true
     dependencies:
       js-tokens: 4.0.0
-    dev: false
 
   /lower-case-first@1.0.2:
     resolution: {integrity: sha512-UuxaYakO7XeONbKrZf5FEgkantPf5DUqDayzP5VXZrtRPdH86s4kN47I8B3TW10S4QKiE3ziHNf3kRN//okHjA==}
@@ -8806,7 +8786,6 @@ packages:
   /normalize-range@0.1.2:
     resolution: {integrity: sha512-bdok/XvKII3nUpklnV6P2hxtMNrCboOjAcyBuQnWEhO665FwrSNRxU+AqpsyvO6LgGYPspN+lu5CLtw4jPRKNA==}
     engines: {node: '>=0.10.0'}
-    dev: false
 
   /normalize-url@4.5.1:
     resolution: {integrity: sha512-9UZCFRHQdNrfTpGg8+1INIg93B6zE0aXMVFkw1WFwvO4SlZywU6aLg5Of0Ap/PgcbSw4LNxvMWXMeugwMCX0AA==}
@@ -9813,7 +9792,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
-    dev: false
 
   /read-cache@1.0.0:
     resolution: {integrity: sha512-Owdv/Ft7IjOgm/i0xvNDZ1LrRANRfew4b2prF3OWMQLxLfu3bS8FVhCsrSCMK4lR56Y9ya+AThoTpDCTxCmpRA==}
@@ -11707,7 +11685,3 @@ packages:
 
   /zod@3.22.2:
     resolution: {integrity: sha512-wvWkphh5WQsJbVk1tbx1l1Ly4yg+XecD+Mq280uBGt9wa5BKSWf4Mhp6GmrkPixhMxmabYY7RbzlwVP32pbGCg==}
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
