@@ -32,6 +32,8 @@
     "clean": "rm -rf .turbo node_modules",
     "lint": "eslint src/",
     "format": "prettier --check \"**/*.{mjs,ts,md,json}\"",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
@@ -43,7 +45,8 @@
     "clsx": "^2.0.0",
     "lucide-react": "^0.274.0",
     "tailwind-merge": "^1.14.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "vitest": "^0.34.3"
   },
   "devDependencies": {
     "@hermes/eslint-config": "0.2.0",

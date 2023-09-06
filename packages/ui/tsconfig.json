@@ -15,7 +15,11 @@
     "preserveWatchOutput": true,
     "skipLibCheck": true,
     "strict": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./src/*"]
+    }
   },
   "include": ["src/**/*", "**/*.ts", "test"],
   "exclude": ["node_modules"]
