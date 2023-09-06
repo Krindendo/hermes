@@ -1,15 +1,10 @@
-import { execSync } from "child_process";
+/* eslint-disable @typescript-eslint/no-unsafe-return */
 import { defineConfig } from "tsup";
 
+import { config } from "@hermes/tsup-config";
+
 export default defineConfig((opts) => ({
-  sourcemap: true,
-  dts: true,
-  format: ["esm", "cjs"],
-  // eslint-disable-next-line @typescript-eslint/require-await
-  async onSuccess() {
-    // emit dts and sourcemaps to enable jump to definition
-    execSync("pnpm tsc --project tsconfig.sourcemap.json");
-  },
+  ...config,
   entry: ["./src/index.ts", "./src/hooks.ts"],
   clean: !opts.watch,
   esbuildOptions: (option) => {
