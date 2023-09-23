@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@planetscale/database": "^1.11.0",
-    "drizzle-orm": "^0.28.5"
+    "drizzle-orm": "^0.28.6"
   },
   "devDependencies": {
     "@hermes/eslint-config": "^0.2.0",
@@ -22,8 +22,8 @@
     "@hermes/tsconfig": "^0.1.0",
     "dotenv-cli": "^7.3.0",
     "drizzle-kit": "^0.19.13",
-    "eslint": "^8.48.0",
-    "prettier": "^3.0.2",
+    "eslint": "^8.50.0",
+    "prettier": "^3.0.3",
     "typescript": "^5.2.2"
   },
   "eslintConfig": {

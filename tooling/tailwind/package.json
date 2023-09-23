@@ -15,7 +15,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "autoprefixer": "^10.4.15",
+    "autoprefixer": "^10.4.16",
     "postcss": "8.4.26",
     "tailwindcss": "3.3.2"
   },
@@ -23,8 +23,8 @@
     "@hermes/eslint-config": "^0.2.0",
     "@hermes/prettier-config": "^0.1.0",
     "@hermes/tsconfig": "^0.1.0",
-    "eslint": "^8.48.0",
-    "prettier": "^3.0.2",
+    "eslint": "^8.50.0",
+    "prettier": "^3.0.3",
     "typescript": "^5.2.2"
   },
   "eslintConfig": {

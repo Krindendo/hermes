@@ -14,7 +14,7 @@
   "dependencies": {
     "@hermes/db": "^0.1.0",
     "@t3-oss/env-nextjs": "^0.6.1",
-    "next": "^13.4.19",
+    "next": "^13.5.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "zod": "^3.22.2"
@@ -23,8 +23,8 @@
     "@hermes/eslint-config": "^0.2.0",
     "@hermes/prettier-config": "^0.1.0",
     "@hermes/tsconfig": "^0.1.0",
-    "eslint": "^8.48.0",
-    "prettier": "^3.0.2",
+    "eslint": "^8.50.0",
+    "prettier": "^3.0.3",
     "typescript": "^5.2.2"
   },
   "eslintConfig": {
