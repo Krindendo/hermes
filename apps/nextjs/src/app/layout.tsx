@@ -5,6 +5,11 @@ import "~/styles/globals.css";
 
 import { headers } from "next/headers";
 
+import { Toaster } from "@hermes/ui";
+
+import { Analytics } from "~/components/analytics";
+import { TailwindIndicator } from "~/components/tailwind-indicator";
+import { ThemeProvider } from "~/components/theme-provider";
 import { siteConfig } from "~/config/site";
 import { TRPCReactProvider } from "./providers";
 
@@ -32,7 +37,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Layout(props: { children: React.ReactNode }) {
+export default function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body
@@ -42,7 +47,12 @@ export default function Layout(props: { children: React.ReactNode }) {
         ].join(" ")}
       >
         <TRPCReactProvider headers={headers()}>
-          {props.children}
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            {props.children}
+            <Analytics />
+            <Toaster />
+            <TailwindIndicator />
+          </ThemeProvider>
         </TRPCReactProvider>
       </body>
     </html>
