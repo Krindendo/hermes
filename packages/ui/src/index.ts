@@ -1,3 +1,7 @@
+"use client";
+
+// This is a short-term solution.
+
 // styles
 import "./styles.css";
 
