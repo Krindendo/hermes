@@ -36,20 +36,13 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  keywords: [
-    "Next.js",
-    "React",
-    "Tailwind CSS",
-    "Server Components",
-    "Radix UI",
-  ],
   authors: [
     {
-      name: "Krindendo",
+      name: "krindendo",
       url: "https://github.com/Krindendo",
     },
   ],
-  creator: "shadcn",
+  creator: "krindendo",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "white" },
     { media: "(prefers-color-scheme: dark)", color: "black" },
