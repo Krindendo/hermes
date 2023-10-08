@@ -3,14 +3,14 @@
 import * as React from "react";
 import { useTheme } from "next-themes";
 
+import { Button } from "@hermes/ui/button";
 import {
-  Button,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-  Icons,
-} from "@hermes/ui";
+} from "@hermes/ui/dropdown-menu";
+import { Icons } from "@hermes/ui/Icons";
 
 export function ModeToggle() {
   const { setTheme } = useTheme();

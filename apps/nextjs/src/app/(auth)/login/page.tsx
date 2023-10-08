@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { buttonVariants, Icons } from "@hermes/ui";
+import { buttonVariants } from "@hermes/ui/button";
+import { Icons } from "@hermes/ui/Icons";
 import { cn } from "@hermes/ui/utils";
 
 import { UserAuthForm } from "~/components/user-auth-form";
