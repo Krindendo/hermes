@@ -1,8 +1,10 @@
 import type { LucideProps } from "lucide-react";
 import {
   Check,
+  ChevronDown,
   ChevronLeft,
   ChevronRight,
+  Circle,
   Globe2,
   Laptop,
   Loader2,
@@ -17,10 +19,12 @@ export const Icons = {
   spinner: Loader2,
   chevronLeft: ChevronLeft,
   chevronRight: ChevronRight,
+  chevronDown: ChevronDown,
   sun: SunMedium,
   moon: Moon,
   laptop: Laptop,
   check: Check,
+  circle: Circle,
   gitHub: ({ ...props }: LucideProps) => (
     <>
       <svg

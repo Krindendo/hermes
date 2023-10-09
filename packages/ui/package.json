@@ -4,35 +4,13 @@
   "version": "0.1.0",
   "type": "module",
   "sideEffects": false,
-  "exports": {
-    "./package.json": "./package.json",
-    "./styles.css": "./dist/index.css",
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    },
-    "./hooks": {
-      "types": "./dist/hooks.d.ts",
-      "import": "./dist/hooks.js"
-    },
-    "./utils": {
-      "types": "./dist/utils.d.ts",
-      "import": "./dist/utils.js"
-    }
-  },
-  "files": [
-    "dist"
+  "source": "./src/components/*",
+  "workspaces": [
+    "src/components/*"
   ],
-  "typesVersions": {
-    "*": {
-      "*": [
-        "dist/*"
-      ]
-    }
-  },
   "license": "MIT",
   "scripts": {
-    "dev": "tsup --watch",
+    "dev": "parcel build './src/components/*/' --no-cache --dist-dir output",
     "build": "tsup",
     "clean": "rm -rf .turbo node_modules",
     "lint": "eslint src/",
@@ -45,16 +23,6 @@
     "react": "^18.2.0"
   },
   "dependencies": {
-    "@radix-ui/react-alert-dialog": "^1.0.5",
-    "@radix-ui/react-checkbox": "^1.0.4",
-    "@radix-ui/react-dropdown-menu": "^2.0.6",
-    "@radix-ui/react-label": "^2.0.2",
-    "@radix-ui/react-progress": "^1.0.3",
-    "@radix-ui/react-select": "^2.0.0",
-    "@radix-ui/react-separator": "^1.0.3",
-    "@radix-ui/react-slot": "^1.0.2",
-    "@radix-ui/react-switch": "^1.0.3",
-    "@radix-ui/react-toast": "^1.1.5",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "lucide-react": "^0.274.0",

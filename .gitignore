@@ -8,6 +8,7 @@ node_modules
 
 # testing
 coverage
+.parcel-cache
 
 # next.js
 .next/
@@ -22,6 +23,7 @@ expo-env.d.ts
 
 # production
 build
+dist
 
 # misc
 .DS_Store

@@ -19,5 +19,5 @@ export * from "./components/skeleton";
 export * from "./components/switch";
 export * from "./components/table";
 export * from "./components/toast";
-export * from "./components/toaster";
-export * from "./components/use-toast";
+export * from "./components/toast";
+export * from "./components/toast";
