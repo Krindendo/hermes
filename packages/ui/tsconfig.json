@@ -18,8 +18,7 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./src/*"],
-      "@hermes/ui-button": ["./src/components/button"]
+      "~/*": ["./src/*"]
     }
   },
   "include": ["src/**/*", "**/*.ts", "test"],
