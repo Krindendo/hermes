@@ -4,7 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
 
-import { Icons } from "@hermes/ui";
+import { Icons } from "@hermes/ui/Icons";
 import { cn } from "@hermes/ui/utils";
 
 import { MobileNav } from "~/components/site-nav-mobile";

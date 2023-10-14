@@ -1,4 +1,4 @@
-import { Button } from "@hermes/ui/server/button";
+import { Button } from "@hermes/ui/button";
 
 export default function TestPage() {
   return (

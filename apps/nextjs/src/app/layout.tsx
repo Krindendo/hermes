@@ -6,7 +6,7 @@ import "~/styles/globals.css";
 
 import { headers } from "next/headers";
 
-import { Toaster } from "@hermes/ui";
+import { Toaster } from "@hermes/ui/toast";
 import { cn } from "@hermes/ui/utils";
 
 import { Analytics } from "~/components/analytics";

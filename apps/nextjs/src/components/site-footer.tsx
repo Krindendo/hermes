@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Icons } from "@hermes/ui";
+import { Icons } from "@hermes/ui/Icons";
 import { cn } from "@hermes/ui/utils";
 
 import { ModeToggle } from "~/components/mode-toggle";

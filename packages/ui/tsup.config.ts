@@ -5,7 +5,7 @@ import { config } from "@hermes/tsup-config";
 export default defineConfig((opts) => ({
   ...config,
   entry: {
-    styles: "./src/styles.ts",
+    index: "./src/index.ts",
     utils: "./src/utils.ts",
     "alert-dialog": "./src/components/alert-dialog/index.ts",
     alert: "./src/components/alert/index.ts",
