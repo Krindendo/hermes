@@ -5,7 +5,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import type * as z from "zod";
 
-import { Button, buttonVariants, Icons, Input } from "@hermes/ui";
+import { Button, buttonVariants } from "@hermes/ui/button";
+import { Icons } from "@hermes/ui/Icons";
+import { Input } from "@hermes/ui/input";
 import { cn } from "@hermes/ui/utils";
 
 import { userAuthSchema } from "~/utils/validations/auth";
