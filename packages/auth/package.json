@@ -12,7 +12,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@hermes/db": "^0.1.0",
+    "@hermes/db": "workspace:*",
     "@t3-oss/env-nextjs": "^0.6.1",
     "next": "^13.5.2",
     "react": "18.2.0",
@@ -20,9 +20,9 @@
     "zod": "^3.22.2"
   },
   "devDependencies": {
-    "@hermes/eslint-config": "^0.2.0",
-    "@hermes/prettier-config": "^0.1.0",
-    "@hermes/tsconfig": "^0.1.0",
+    "@hermes/eslint-config": "workspace:*",
+    "@hermes/prettier-config": "workspace:*",
+    "@hermes/tsconfig": "workspace:*",
     "eslint": "^8.50.0",
     "prettier": "^3.0.3",
     "typescript": "^5.2.2"

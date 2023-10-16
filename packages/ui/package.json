@@ -3,35 +3,13 @@
   "private": true,
   "version": "0.2.0",
   "type": "module",
-  "sideEffects": [
-    "**/*.css"
-  ],
+  "sideEffects": false,
   "license": "MIT",
-  "exports": {
-    "./styles.css": "./dist/index.css",
-    ".": "./dist/components",
-    "./hooks": {
-      "types": "./dist/hooks.d.ts",
-      "import": "./dist/hooks.js"
-    },
-    "./utils": {
-      "types": "./dist/utils.d.ts",
-      "import": "./dist/utils.js"
-    }
-  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
-    "dist"
+    "dist/**"
   ],
-  "typesVersions": {
-    "*": {
-      "button": [
-        "./dist/components/button/index.d.ts"
-      ],
-      "toast": [
-        "./dist/components/toast/index.d.ts"
-      ]
-    }
-  },
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
@@ -64,11 +42,11 @@
     "vitest": "^0.34.5"
   },
   "devDependencies": {
-    "@hermes/eslint-config": "0.2.0",
-    "@hermes/prettier-config": "^0.1.0",
-    "@hermes/tailwind-config": "^0.1.0",
-    "@hermes/tsconfig": "^0.1.0",
-    "@hermes/tsup-config": "0.1.0",
+    "@hermes/eslint-config": "workspace:*",
+    "@hermes/prettier-config": "workspace:*",
+    "@hermes/tailwind-config": "workspace:*",
+    "@hermes/tsconfig": "workspace:*",
+    "@hermes/tsup-config": "workspace:*",
     "@types/react": "^18.2.22",
     "autoprefixer": "^10.4.16",
     "eslint": "^8.50.0",

@@ -13,10 +13,10 @@
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
-    "@hermes/api": "^0.1.0",
-    "@hermes/auth": "^0.1.0",
-    "@hermes/db": "^0.1.0",
-    "@hermes/ui": "^0.1.0",
+    "@hermes/api": "workspace:*",
+    "@hermes/auth": "workspace:*",
+    "@hermes/db": "workspace:*",
+    "@hermes/ui": "workspace:*",
     "@hookform/resolvers": "^3.3.1",
     "@t3-oss/env-nextjs": "^0.6.1",
     "@tanstack/react-query": "^4.35.3",

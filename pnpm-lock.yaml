@@ -103,19 +103,19 @@ importers:
         specifier: ^7.2.5
         version: 7.2.5
       '@hermes/api':
-        specifier: ^0.1.0
+        specifier: workspace:*
         version: link:../../packages/api
       '@hermes/eslint-config':
-        specifier: ^0.2.0
+        specifier: workspace:*
         version: link:../../tooling/eslint
       '@hermes/prettier-config':
-        specifier: ^0.1.0
+        specifier: workspace:*
         version: link:../../tooling/prettier
       '@hermes/tailwind-config':
-        specifier: ^0.1.0
+        specifier: workspace:*
         version: link:../../tooling/tailwind
       '@hermes/tsconfig':
-        specifier: ^0.1.0
+        specifier: workspace:*
         version: link:../../tooling/typescript
       '@types/babel__core':
         specifier: ^7.20.2
@@ -139,16 +139,16 @@ importers:
   apps/nextjs:
     dependencies:
       '@hermes/api':
-        specifier: ^0.1.0
+        specifier: workspace:*
         version: link:../../packages/api
       '@hermes/auth':
-        specifier: ^0.1.0
+        specifier: workspace:*
         version: link:../../packages/auth
       '@hermes/db':
-        specifier: ^0.1.0
+        specifier: workspace:*
         version: link:../../packages/db
       '@hermes/ui':
-        specifier: ^0.1.0
+        specifier: workspace:*
         version: link:../../packages/ui
       '@hookform/resolvers':
         specifier: ^3.3.1
@@ -242,10 +242,10 @@ importers:
   packages/api:
     dependencies:
       '@hermes/auth':
-        specifier: ^0.1.0
+        specifier: workspace:*
         version: link:../auth
       '@hermes/db':
-        specifier: ^0.1.0
+        specifier: workspace:*
         version: link:../db
       '@trpc/client':
         specifier: ^10.38.4
@@ -261,13 +261,13 @@ importers:
         version: 3.22.4
     devDependencies:
       '@hermes/eslint-config':
-        specifier: ^0.2.0
+        specifier: workspace:*
         version: link:../../tooling/eslint
       '@hermes/prettier-config':
-        specifier: ^0.1.0
+        specifier: workspace:*
         version: link:../../tooling/prettier
       '@hermes/tsconfig':
-        specifier: ^0.1.0
+        specifier: workspace:*
         version: link:../../tooling/typescript
       eslint:
         specifier: ^8.50.0
@@ -282,7 +282,7 @@ importers:
   packages/auth:
     dependencies:
       '@hermes/db':
-        specifier: ^0.1.0
+        specifier: workspace:*
         version: link:../db
       '@t3-oss/env-nextjs':
         specifier: ^0.6.1
@@ -301,13 +301,13 @@ importers:
         version: 3.22.4
     devDependencies:
       '@hermes/eslint-config':
-        specifier: ^0.2.0
+        specifier: workspace:*
         version: link:../../tooling/eslint
       '@hermes/prettier-config':
-        specifier: ^0.1.0
+        specifier: workspace:*
         version: link:../../tooling/prettier
       '@hermes/tsconfig':
-        specifier: ^0.1.0
+        specifier: workspace:*
         version: link:../../tooling/typescript
       eslint:
         specifier: ^8.50.0
@@ -329,13 +329,13 @@ importers:
         version: 0.28.6(@planetscale/database@1.11.0)
     devDependencies:
       '@hermes/eslint-config':
-        specifier: ^0.2.0
+        specifier: workspace:*
         version: link:../../tooling/eslint
       '@hermes/prettier-config':
-        specifier: ^0.1.0
+        specifier: workspace:*
         version: link:../../tooling/prettier
       '@hermes/tsconfig':
-        specifier: ^0.1.0
+        specifier: workspace:*
         version: link:../../tooling/typescript
       dotenv-cli:
         specifier: ^7.3.0
@@ -405,19 +405,19 @@ importers:
         version: 0.34.6
     devDependencies:
       '@hermes/eslint-config':
-        specifier: 0.2.0
+        specifier: workspace:*
         version: link:../../tooling/eslint
       '@hermes/prettier-config':
-        specifier: ^0.1.0
+        specifier: workspace:*
         version: link:../../tooling/prettier
       '@hermes/tailwind-config':
-        specifier: ^0.1.0
+        specifier: workspace:*
         version: link:../../tooling/tailwind
       '@hermes/tsconfig':
-        specifier: ^0.1.0
+        specifier: workspace:*
         version: link:../../tooling/typescript
       '@hermes/tsup-config':
-        specifier: 0.1.0
+        specifier: workspace:*
         version: link:../../tooling/tsup
       '@types/react':
         specifier: ^18.2.22
@@ -481,10 +481,10 @@ importers:
         version: 4.6.0(eslint@8.51.0)
     devDependencies:
       '@hermes/prettier-config':
-        specifier: ^0.1.0
+        specifier: workspace:*
         version: link:../prettier
       '@hermes/tsconfig':
-        specifier: ^0.1.0
+        specifier: workspace:*
         version: link:../typescript
       eslint:
         specifier: ^8.50.0
@@ -506,7 +506,7 @@ importers:
         version: 0.5.5(@ianvs/prettier-plugin-sort-imports@4.1.0)(prettier@3.0.3)
     devDependencies:
       '@hermes/tsconfig':
-        specifier: ^0.1.0
+        specifier: workspace:*
         version: link:../typescript
       typescript:
         specifier: ^5.2.2
@@ -525,13 +525,13 @@ importers:
         version: 3.3.2
     devDependencies:
       '@hermes/eslint-config':
-        specifier: ^0.2.0
+        specifier: workspace:*
         version: link:../eslint
       '@hermes/prettier-config':
-        specifier: ^0.1.0
+        specifier: workspace:*
         version: link:../prettier
       '@hermes/tsconfig':
-        specifier: ^0.1.0
+        specifier: workspace:*
         version: link:../typescript
       eslint:
         specifier: ^8.50.0
