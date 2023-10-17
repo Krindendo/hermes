@@ -1,18 +1,13 @@
 {
   "name": "@hermes/ui",
   "private": true,
-  "version": "0.2.0",
-  "type": "module",
-  "sideEffects": false,
+  "version": "1.0.0",
   "license": "MIT",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist/**"
+  "sideEffects": [
+    "**/*.css"
   ],
+  "main": "./index.ts",
   "scripts": {
-    "dev": "tsup --watch",
-    "build": "tsup",
     "clean": "rm -rf .turbo node_modules",
     "lint": "eslint src/",
     "format": "prettier --check \"**/*.{mjs,ts,md,json}\"",

@@ -1,7 +1,7 @@
 import * as React from "react";
 import Link from "next/link";
 
-import { Icons } from "@hermes/ui/Icons";
+import { Icons } from "@hermes/ui/components/Icons";
 import { cn } from "@hermes/ui/utils";
 
 import { siteConfig } from "~/config/site";

@@ -1,11 +1,6 @@
 {
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "~/*": ["./src/*"]
-    }
-  },
+  "compilerOptions": {},
   "extends": "@hermes/tsconfig/react-library.json",
-  "include": ["src/**/*", "**/*.ts", "**/*.tsx", "test"],
+  "include": ["."],
   "exclude": ["dist", "build", "node_modules"]
 }

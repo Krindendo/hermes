@@ -3,8 +3,8 @@
 import * as React from "react";
 import * as SelectPrimitive from "@radix-ui/react-select";
 
-import { Icons } from "~/components/Icons";
-import { cn } from "~/lib/utils";
+import { cn } from "../lib/utils";
+import { Icons } from "./Icons";
 
 const Select = SelectPrimitive.Root;
 
