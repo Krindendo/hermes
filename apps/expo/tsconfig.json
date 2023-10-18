@@ -1,5 +1,5 @@
 {
-  "extends": "@hermes/tsconfig/base.json",
+  "extends": "@hermes/tsconfig/react-native.json",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {

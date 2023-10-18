@@ -9,7 +9,7 @@
   "main": "./index.ts",
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
-    "lint": "eslint src/",
+    "lint": "eslint \"**/*.{ts,tsx}\"",
     "format": "prettier --check \"**/*.{mjs,ts,md,json}\"",
     "test": "vitest run",
     "test:watch": "vitest",

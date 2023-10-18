@@ -9,7 +9,7 @@
     "allowImportingTsExtensions": true,
     "inlineSources": false,
     "isolatedModules": true,
-    "moduleResolution": "Node",
+    "moduleResolution": "node",
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "preserveWatchOutput": true,
