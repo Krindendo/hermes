@@ -8,6 +8,7 @@ import type * as z from "zod";
 import { Button, buttonVariants } from "@hermes/ui/components/button";
 import { Icons } from "@hermes/ui/components/Icons";
 import { Input } from "@hermes/ui/components/input";
+import { Label } from "@hermes/ui/components/label";
 import { cn } from "@hermes/ui/utils";
 
 import { userAuthSchema } from "~/utils/validations/auth";
@@ -43,13 +44,12 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
         onSubmit={handleSubmit(onSubmit)}
         className="flex w-full max-w-xs flex-col text-center"
       >
-        <h1 className="text-3xl font-bold">Log in to Hermes</h1>
-        <span className="h-8 w-full"></span>
-
+        <Label className="sr-only" htmlFor="email">
+          Email
+        </Label>
         <Input
           id="email"
-          className="w-full py-6"
-          placeholder="Email Address"
+          placeholder="name@example.com"
           type="email"
           autoCapitalize="none"
           autoComplete="email"
@@ -63,10 +63,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
           </p>
         )}
         <span className="h-3 w-full"></span>
-        <Button
-          className={cn(buttonVariants(), "w-full py-6")}
-          disabled={isLoading}
-        >
+        <Button className={cn(buttonVariants())} disabled={isLoading}>
           {isLoading && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}
           Continue with Email
         </Button>

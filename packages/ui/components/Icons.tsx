@@ -5,16 +5,16 @@ import {
   ChevronLeft,
   ChevronRight,
   Circle,
-  Globe2,
   Laptop,
   Loader2,
   Moon,
+  SaveAll,
   SunMedium,
   X,
 } from "lucide-react";
 
 export const Icons = {
-  logo: Globe2,
+  logo: SaveAll,
   close: X,
   spinner: Loader2,
   chevronLeft: ChevronLeft,

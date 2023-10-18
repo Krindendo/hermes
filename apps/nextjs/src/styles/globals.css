@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @import "@hermes/ui/styles.css";
-
+/* 
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -82,4 +82,4 @@
       "rlig" 1,
       "calt" 1;
   }
-}
+} */

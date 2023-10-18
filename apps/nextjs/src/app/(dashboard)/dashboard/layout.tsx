@@ -1,7 +1,15 @@
+import { SiteHeader } from "~/components/site-header";
+import { marketingConfig } from "~/config/marketing";
+
 interface DashboardLayoutProps {
   children?: React.ReactNode;
 }
 
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
-  return { children };
+  return (
+    <div>
+      <SiteHeader items={marketingConfig.mainNav} />
+      {children}
+    </div>
+  );
 }
