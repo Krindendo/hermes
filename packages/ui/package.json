@@ -19,7 +19,9 @@
     "react": "^18.2.0"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.3.1",
     "@radix-ui/react-alert-dialog": "^1.0.5",
+    "@radix-ui/react-avatar": "^1.0.4",
     "@radix-ui/react-checkbox": "^1.0.4",
     "@radix-ui/react-dropdown-menu": "^2.0.6",
     "@radix-ui/react-label": "^2.0.2",
@@ -32,16 +34,18 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "lucide-react": "^0.274.0",
+    "react-hook-form": "^7.46.2",
     "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.7",
-    "vitest": "^0.34.5"
+    "vitest": "^0.34.5",
+    "zod": "^3.22.2"
   },
   "devDependencies": {
-    "@hermes/eslint-config": "workspace:*",
-    "@hermes/prettier-config": "workspace:*",
-    "@hermes/tailwind-config": "workspace:*",
-    "@hermes/tsconfig": "workspace:*",
-    "@hermes/tsup-config": "workspace:*",
+    "@hermes/eslint-config": "0.2.0",
+    "@hermes/prettier-config": "0.1.0",
+    "@hermes/tailwind-config": "0.1.0",
+    "@hermes/tsconfig": "0.1.0",
+    "@hermes/tsup-config": "0.1.0",
     "@types/react": "^18.2.22",
     "autoprefixer": "^10.4.16",
     "eslint": "^8.50.0",

@@ -20,9 +20,9 @@
     "tailwindcss": "3.3.2"
   },
   "devDependencies": {
-    "@hermes/eslint-config": "workspace:*",
-    "@hermes/prettier-config": "workspace:*",
-    "@hermes/tsconfig": "workspace:*",
+    "@hermes/eslint-config": "0.2.0",
+    "@hermes/prettier-config": "0.1.0",
+    "@hermes/tsconfig": "0.1.0",
     "eslint": "^8.50.0",
     "prettier": "^3.0.3",
     "typescript": "^5.2.2"

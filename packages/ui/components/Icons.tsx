@@ -7,9 +7,12 @@ import {
   Circle,
   Laptop,
   Loader2,
+  LogOut,
   Moon,
   SaveAll,
+  Settings,
   SunMedium,
+  User,
   X,
 } from "lucide-react";
 
@@ -25,6 +28,9 @@ export const Icons = {
   laptop: Laptop,
   check: Check,
   circle: Circle,
+  user: User,
+  settings: Settings,
+  logOut: LogOut,
   gitHub: ({ ...props }: LucideProps) => (
     <>
       <svg
