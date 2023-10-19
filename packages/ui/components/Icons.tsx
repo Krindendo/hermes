@@ -1,5 +1,8 @@
 import type { LucideProps } from "lucide-react";
 import {
+  ArrowDownUp,
+  ArrowDownWideNarrow,
+  ArrowUpWideNarrow,
   Check,
   ChevronDown,
   ChevronLeft,
@@ -9,6 +12,7 @@ import {
   Loader2,
   LogOut,
   Moon,
+  MoreHorizontal,
   SaveAll,
   Settings,
   SunMedium,
@@ -23,6 +27,9 @@ export const Icons = {
   chevronLeft: ChevronLeft,
   chevronRight: ChevronRight,
   chevronDown: ChevronDown,
+  arrowDownWideNarrow: ArrowDownWideNarrow,
+  arrowUpWideNarrow: ArrowUpWideNarrow,
+  arrowDownUp: ArrowDownUp,
   sun: SunMedium,
   moon: Moon,
   laptop: Laptop,
@@ -31,6 +38,7 @@ export const Icons = {
   user: User,
   settings: Settings,
   logOut: LogOut,
+  moreHorizontal: MoreHorizontal,
   gitHub: ({ ...props }: LucideProps) => (
     <>
       <svg
