@@ -1,14 +1,21 @@
-import { NavUser } from "./nav-user";
+interface DashboardHeaderProps {
+  heading: string;
+  text?: string;
+  children?: React.ReactNode;
+}
 
-export function DashboardHeader() {
+export function DashboardHeader({
+  heading,
+  text,
+  children,
+}: DashboardHeaderProps) {
   return (
-    <div className="border-b">
-      <div className="flex h-16 items-center px-4">
-        <div className="mx-6"></div>
-        <div className="ml-auto flex items-center space-x-4">
-          <NavUser />
-        </div>
+    <div className="flex items-center justify-between px-2">
+      <div className="grid gap-1">
+        <h1 className="font-heading text-3xl md:text-4xl">{heading}</h1>
+        {text && <p className="text-lg text-muted-foreground">{text}</p>}
       </div>
+      {children}
     </div>
   );
 }

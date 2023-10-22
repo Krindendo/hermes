@@ -1,22 +1,23 @@
 import { dashboardColumns as columns } from "~/components/dashboard-columns";
 import { DashboardDataTable } from "~/components/dashboard-data-table";
+import { DashboardHeader } from "~/components/dashboard-header";
+import { DashboardShell } from "~/components/dashboard-shell";
+import { DashboardUploadFileButton } from "~/components/dashboard-upload-file-button";
 
 export default function DashboardPage() {
   const files = MockFiles;
+
+  const title = `Files (${files.length})`;
+
   return (
-    <div>
-      <div className="flex items-center justify-between space-y-2">
-        <div>
-          <h2 className="text-2xl font-bold tracking-tight">
-            Files <span>({files.length})</span>
-          </h2>
-          <p className="text-muted-foreground">
-            Here&apos;s a list of your files!
-          </p>
-        </div>
+    <DashboardShell>
+      <DashboardHeader heading={title} text="Here's a list of your files!">
+        <DashboardUploadFileButton />
+      </DashboardHeader>
+      <div>
+        <DashboardDataTable data={files} columns={columns} />
       </div>
-      <DashboardDataTable data={files} columns={columns} />
-    </div>
+    </DashboardShell>
   );
 }
 
