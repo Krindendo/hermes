@@ -4,7 +4,7 @@ import {
   AvatarImage,
 } from "@hermes/ui/components/avatar";
 import type { AvatarProps } from "@hermes/ui/components/avatar";
-import { Icons } from "@hermes/ui/components/icons";
+import { Icons } from "@hermes/ui/components/Icons";
 
 import type { User } from "~/types/user";
 
