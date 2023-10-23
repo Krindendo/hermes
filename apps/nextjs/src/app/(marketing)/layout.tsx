@@ -1,11 +1,11 @@
 import Link from "next/link";
 
 import { buttonVariants } from "@hermes/ui/components/button";
-import { Icons } from "@hermes/ui/components/Icons";
 import { cn } from "@hermes/ui/utils";
 
 import { SiteFooter } from "~/components/site-footer";
-import { siteConfig } from "~/config/site";
+import { SiteNav } from "~/components/site-nav";
+import { marketingConfig } from "~/config/marketing";
 
 interface MarketingLayoutProps {
   children: React.ReactNode;
@@ -16,12 +16,7 @@ export default function MarketingLayout({ children }: MarketingLayoutProps) {
     <div className="container flex min-h-screen flex-col">
       <header className="container z-40 bg-background">
         <div className="flex h-20 items-center justify-between py-6">
-          <Link href="/" className="hidden items-center space-x-2 md:flex">
-            <Icons.logo />
-            <span className="hidden font-bold sm:inline-block">
-              {siteConfig.name}
-            </span>
-          </Link>
+          <SiteNav items={marketingConfig.mainNav} />
           <nav>
             <Link
               href="/login"
@@ -39,4 +34,13 @@ export default function MarketingLayout({ children }: MarketingLayoutProps) {
       <SiteFooter />
     </div>
   );
+}
+
+{
+  /* <Link href="/" className="hidden items-center space-x-2 md:flex">
+            <Icons.logo />
+            <span className="hidden font-bold sm:inline-block">
+              {siteConfig.name}
+            </span>
+          </Link> */
 }

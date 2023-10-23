@@ -1,7 +1,5 @@
 "use client";
 
-import type { Row } from "@tanstack/react-table";
-
 import { Button } from "@hermes/ui/components/button";
 import {
   DropdownMenu,
@@ -12,14 +10,7 @@ import {
 } from "@hermes/ui/components/dropdown-menu";
 import { Icons } from "@hermes/ui/components/Icons";
 
-interface DashboardDataTableRowActionsProps<TData> {
-  row: Row<TData>;
-}
-
-export function DashboardDataTableRowActions<TData>({
-  row,
-}: DashboardDataTableRowActionsProps<TData>) {
-  console.log("row", row);
+export function DataTableRowActions() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>

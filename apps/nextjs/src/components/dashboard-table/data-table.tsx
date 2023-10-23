@@ -27,15 +27,17 @@ import {
   TableRow,
 } from "@hermes/ui/components/table";
 
-interface DashboardDataTableProps<TData, TValue> {
+import { DataTablePagination } from "./data-table-pagination";
+
+interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
 }
 
-export function DashboardDataTable<TData, TValue>({
+export function DataTable<TData, TValue>({
   columns,
   data,
-}: DashboardDataTableProps<TData, TValue>) {
+}: DataTableProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({});
@@ -118,6 +120,7 @@ export function DashboardDataTable<TData, TValue>({
           </TableBody>
         </Table>
       </div>
+      <DataTablePagination table={table} />
     </div>
   );
 }

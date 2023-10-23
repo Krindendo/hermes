@@ -1,6 +1,7 @@
 import { SiteFooter } from "~/components/site-footer";
-import { SiteHeader } from "~/components/site-header";
+import { SiteNav } from "~/components/site-nav";
 import { UserAccountNav } from "~/components/user-account-nav";
+import { dashboardConfig } from "~/config/dashboard";
 import type { User } from "~/types/user";
 
 interface DashboardLayoutProps {
@@ -17,7 +18,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
     <div className="flex min-h-screen flex-col space-y-6">
       <header className="sticky top-0 z-40 border-b bg-background">
         <div className="container flex h-16 items-center justify-between py-4">
-          <SiteHeader items={[]} />
+          <SiteNav items={dashboardConfig.mainNav} />
           <UserAccountNav
             user={{
               name: user.name,

@@ -4,6 +4,7 @@ export interface SiteConfig {
   url: string;
   ogImage: string;
   links: {
+    main: string;
     github: string;
   };
 }
@@ -14,6 +15,7 @@ export const siteConfig: SiteConfig = {
   url: "http://localhost:3000",
   ogImage: "http://localhost:3000/og.jpg",
   links: {
+    main: "https://github.com/Krindendo",
     github: "https://github.com/Krindendo/hermes",
   },
 };

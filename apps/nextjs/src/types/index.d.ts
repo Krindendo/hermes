@@ -40,5 +40,5 @@ export interface MarketingConfig {
 
 export interface DashboardConfig {
   mainNav: MainNavItem[];
-  sidebarNav: SidebarNavItem[];
+  //sidebarNav: SidebarNavItem[];
 }

@@ -15,21 +15,12 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
           <p className="text-center text-sm leading-loose md:text-left">
             Built by{" "}
             <a
-              href={siteConfig.links.github}
+              href={siteConfig.links.main}
               target="_blank"
               rel="noreferrer"
               className="font-medium underline underline-offset-4"
             >
               krindendo
-            </a>
-            . Hosted on{" "}
-            <a
-              href="https://vercel.com"
-              target="_blank"
-              rel="noreferrer"
-              className="font-medium underline underline-offset-4"
-            >
-              Vercel
             </a>
             . The source code is available on{" "}
             <a
