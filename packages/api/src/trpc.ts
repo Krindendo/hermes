@@ -49,14 +49,12 @@ const createInnerTRPCContext = (opts: CreateContextOptions) => {
  * @link https://trpc.io/docs/context
  */
 export const createTRPCContext = (opts: { req?: Request; auth?: Session }) => {
-  const session = opts.auth ?? auth();
+  const session: Session = opts.auth ?? auth();
   const source = opts.req?.headers.get("x-trpc-source") ?? "unknown";
 
   console.log(">>> tRPC Request from", source, "by", session?.user);
 
-  return createInnerTRPCContext({
-    session,
-  });
+  return createInnerTRPCContext({ session });
 };
 
 /**
