@@ -5,7 +5,6 @@
     "paths": {
       "~/*": ["./src/*"]
     },
-    "jsx": "react-native",
     "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json",
     "types": ["nativewind/types"]
   },

@@ -1,8 +1,8 @@
 import type { ExpoConfig } from "@expo/config";
 
 const defineConfig = (): ExpoConfig => ({
-  name: "expo",
-  slug: "expo",
+  name: "Hermes",
+  slug: "hermes",
   scheme: "expo",
   version: "1.0.0",
   orientation: "portrait",
@@ -11,7 +11,7 @@ const defineConfig = (): ExpoConfig => ({
   splash: {
     image: "./assets/icon.png",
     resizeMode: "contain",
-    backgroundColor: "#1F104A",
+    backgroundColor: "#cae3f1",
   },
   updates: {
     fallbackToCacheTimeout: 0,
@@ -25,7 +25,7 @@ const defineConfig = (): ExpoConfig => ({
     package: "your.bundle.identifier",
     adaptiveIcon: {
       foregroundImage: "./assets/icon.png",
-      backgroundColor: "#1F104A",
+      backgroundColor: "#cae3f1",
     },
   },
   // extra: {

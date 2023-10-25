@@ -1,19 +1,22 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Pressable, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Stack } from "expo-router";
+import { Link } from "expo-router";
+import { Stack } from "expo-router/stack";
 
-const Index = () => {
+export default function LoginScreen() {
   return (
-    <SafeAreaView className="bg-[#1F104A]">
-      <Stack.Screen options={{ title: "Home Page" }} />
+    <SafeAreaView className="bg-slate-100">
+      <Stack screenOptions={{ title: "Home Page" }} />
       <View className="h-full w-full p-4">
-        <Text className="mx-auto pb-2 text-5xl font-bold text-white">
-          Create <Text className="text-pink-400">T3</Text> Turbo
-        </Text>
+        <Text>Login</Text>
+        <TextInput />
+        <Link href="/access" asChild>
+          <Pressable>
+            <Text>Sign in</Text>
+          </Pressable>
+        </Link>
       </View>
     </SafeAreaView>
   );
-};
-
-export default Index;
+}
