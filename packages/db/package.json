@@ -14,17 +14,17 @@
   },
   "dependencies": {
     "@planetscale/database": "^1.11.0",
-    "drizzle-orm": "^0.28.6"
+    "drizzle-orm": "^0.29.0"
   },
   "devDependencies": {
     "@hermes/eslint-config": "0.2.0",
     "@hermes/prettier-config": "0.1.0",
     "@hermes/tsconfig": "0.1.0",
     "dotenv-cli": "^7.3.0",
-    "drizzle-kit": "^0.19.13",
-    "eslint": "^8.52.0",
-    "prettier": "^3.0.3",
-    "typescript": "^5.2.2"
+    "drizzle-kit": "^0.20.4",
+    "eslint": "^8.54.0",
+    "prettier": "^3.1.0",
+    "typescript": "^5.3.2"
   },
   "eslintConfig": {
     "root": true,
