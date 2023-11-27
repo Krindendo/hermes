@@ -8,18 +8,21 @@ node_modules
 
 # testing
 coverage
-.parcel-cache
 
 # next.js
 .next/
-**/next-env.d.ts
 out/
-build
+next-env.d.ts
+
+# nitro
+.nitro/
+.output/
 
 # expo
 .expo/
 dist/
 expo-env.d.ts
+apps/expo/.gitignore
 
 # production
 build
@@ -38,9 +41,6 @@ yarn-error.log*
 # local env files
 .env
 .env*.local
-.env.development.local
-.env.test.local
-.env.production.local
 .env.development
 .env.test
 .env.production

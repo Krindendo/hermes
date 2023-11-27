@@ -1,0 +1,4 @@
+{
+  "extends": "@hermes/tsconfig/nextjs.json",
+  "include": ["routes"]
+}
