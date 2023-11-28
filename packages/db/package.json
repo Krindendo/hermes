@@ -17,9 +17,9 @@
     "drizzle-orm": "^0.29.0"
   },
   "devDependencies": {
-    "@hermes/eslint-config": "0.2.0",
-    "@hermes/prettier-config": "0.1.0",
-    "@hermes/tsconfig": "0.1.0",
+    "@hermes/eslint-config": "workspace:^0.2.0",
+    "@hermes/prettier-config": "workspace:^0.1.0",
+    "@hermes/tsconfig": "workspace:^0.1.0",
     "dotenv-cli": "^7.3.0",
     "drizzle-kit": "^0.20.4",
     "eslint": "^8.54.0",

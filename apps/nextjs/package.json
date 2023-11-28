@@ -13,10 +13,10 @@
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
-    "@hermes/api": "0.1.0",
-    "@hermes/auth": "0.1.0",
-    "@hermes/db": "0.1.0",
-    "@hermes/ui": "1.0.0",
+    "@hermes/api": "workspace:^0.1.0",
+    "@hermes/auth": "workspace:^0.1.0",
+    "@hermes/db": "workspace:^0.1.0",
+    "@hermes/ui": "workspace:^1.0.0",
     "@hookform/resolvers": "^3.3.2",
     "@t3-oss/env-nextjs": "^0.7.1",
     "@tanstack/react-query": "^5.8.6",
@@ -37,10 +37,10 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@hermes/eslint-config": "^0.2.0",
-    "@hermes/prettier-config": "^0.1.0",
-    "@hermes/tailwind-config": "^0.1.0",
-    "@hermes/tsconfig": "^0.1.0",
+    "@hermes/eslint-config": "workspace:^0.2.0",
+    "@hermes/prettier-config": "workspace:^0.1.0",
+    "@hermes/tailwind-config": "workspace:^0.1.0",
+    "@hermes/tsconfig": "workspace:^0.1.0",
     "@types/node": "^20.10.0",
     "@types/react": "^18.2.38",
     "@types/react-dom": "^18.2.17",

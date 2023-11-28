@@ -41,11 +41,11 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@hermes/eslint-config": "0.2.0",
-    "@hermes/prettier-config": "0.1.0",
-    "@hermes/tailwind-config": "0.1.0",
-    "@hermes/tsconfig": "0.1.0",
-    "@hermes/tsup-config": "0.1.0",
+    "@hermes/eslint-config": "workspace:^0.2.0",
+    "@hermes/prettier-config": "workspace:^0.1.0",
+    "@hermes/tailwind-config": "workspace:^0.1.0",
+    "@hermes/tsconfig": "workspace:^0.1.0",
+    "@hermes/tsup-config": "workspace:^0.1.0",
     "@types/react": "^18.2.38",
     "autoprefixer": "^10.4.16",
     "eslint": "^8.54.0",
