@@ -459,19 +459,19 @@ importers:
         version: 3.22.4
     devDependencies:
       '@hermes/eslint-config':
-        specifier: workspace:^0.2.0
+        specifier: workspace:*
         version: link:../../tooling/eslint
       '@hermes/prettier-config':
-        specifier: workspace:^0.1.0
+        specifier: workspace:*
         version: link:../../tooling/prettier
       '@hermes/tailwind-config':
         specifier: workspace:^
         version: link:../../tooling/tailwind
       '@hermes/tsconfig':
-        specifier: workspace:^0.1.0
+        specifier: workspace:^
         version: link:../../tooling/typescript
       '@hermes/tsup-config':
-        specifier: workspace:^0.1.0
+        specifier: workspace:^
         version: link:../../tooling/tsup
       '@types/react':
         specifier: ^18.2.38
