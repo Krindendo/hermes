@@ -43,7 +43,7 @@
   "devDependencies": {
     "@hermes/eslint-config": "workspace:^0.2.0",
     "@hermes/prettier-config": "workspace:^0.1.0",
-    "@hermes/tailwind-config": "workspace:^0.1.0",
+    "@hermes/tailwind-config": "workspace:^",
     "@hermes/tsconfig": "workspace:^0.1.0",
     "@hermes/tsup-config": "workspace:^0.1.0",
     "@types/react": "^18.2.38",

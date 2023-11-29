@@ -10,16 +10,15 @@
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "typecheck": "tsc --noEmit"
   },
-  "dependencies": {},
   "devDependencies": {
     "@hermes/eslint-config": "^0.2.0",
     "@hermes/prettier-config": "^0.1.0",
     "@hermes/tailwind-config": "^0.1.0",
     "@hermes/tsconfig": "^0.1.0",
-    "eslint": "^8.53.0",
+    "eslint": "^8.54.0",
     "nitropack": "^2.7.2",
     "prettier": "^3.1.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.3.2"
   },
   "eslintConfig": {
     "root": true,
