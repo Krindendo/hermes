@@ -1,3 +1,5 @@
-import { eventHandler, toWebRequest } from "h3";
+import { eventHandler } from "h3";
 
-export default eventHandler(async (event) => {});
+export default eventHandler((event) => {
+  console.log("event", event);
+});

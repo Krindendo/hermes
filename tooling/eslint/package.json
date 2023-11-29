@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "@next/eslint-plugin-next": "^14.0.3",
-    "@types/eslint": "^8.44.7",
     "@typescript-eslint/eslint-plugin": "^6.12.0",
     "@typescript-eslint/parser": "^6.12.0",
     "eslint-config-prettier": "^9.0.0",
@@ -27,6 +26,7 @@
     "eslint-plugin-react-hooks": "^4.6.0"
   },
   "devDependencies": {
+    "@types/eslint": "^8.44.7",
     "@hermes/prettier-config": "workspace:^0.1.0",
     "@hermes/tsconfig": "workspace:^0.1.0",
     "eslint": "^8.54.0",

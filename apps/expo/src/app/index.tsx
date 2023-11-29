@@ -1,7 +1,7 @@
 import React from "react";
 import { Pressable, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Link, router, Stack } from "expo-router";
+import { router, Stack } from "expo-router";
 
 import { useSession } from "~/components/ctx";
 
