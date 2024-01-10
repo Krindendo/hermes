@@ -18,6 +18,9 @@
       "outputs": ["node_modules/.cache/.prettiercache"],
       "outputMode": "new-only"
     },
+    "generate:db": {
+      "cache": false
+    },
     "lint": {
       "dependsOn": ["^build"],
       "outputs": ["node_modules/.cache/.eslintcache"]

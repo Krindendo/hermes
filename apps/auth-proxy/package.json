@@ -6,6 +6,8 @@
     "build": "nitro build",
     "clean": "rm -rf .turbo node_modules",
     "dev": "nitro dev --port 3001",
+    "generate:db": "drizzle-kit generate:sqlite",
+    "push:db": "drizzle-kit push:sqlite",
     "lint": "eslint .",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "typecheck": "tsc --noEmit"
@@ -15,6 +17,7 @@
     "@hermes/prettier-config": "workspace:^",
     "@hermes/tailwind-config": "workspace:^",
     "@hermes/tsconfig": "workspace:^",
+    "@types/better-sqlite3": "^7.6.8",
     "eslint": "^8.56.0",
     "nitropack": "^2.8.1",
     "prettier": "^3.1.1",
@@ -26,5 +29,8 @@
       "@hermes/eslint-config/base"
     ]
   },
-  "prettier": "@hermes/prettier-config"
+  "prettier": "@hermes/prettier-config",
+  "dependencies": {
+    "better-sqlite3": "^9.2.2"
+  }
 }
