@@ -1,4 +1,3 @@
 {
-  "extends": "@hermes/tsconfig/nextjs.json",
-  "include": ["routes"]
+  "extends": "./.nitro/types/tsconfig.json"
 }

@@ -3,7 +3,7 @@
 
 import Database from "better-sqlite3";
 import { drizzle } from "drizzle-orm/better-sqlite3";
-import { defineEventHandler } from "h3";
+import { eventHandler } from "h3";
 
 import { user } from "../db/schema";
 
@@ -18,7 +18,7 @@ const sqlite = new Database("sqlite.db");
 const db = drizzle(sqlite);
 const prepared = db.select().from(user).prepare();
 
-export default defineEventHandler(async (event) => {
+export default eventHandler(async (event) => {
   console.log("event", event);
   await db.insert(user).values({
     email: "example@gmail.com",

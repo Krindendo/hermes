@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "prepare": "nitropack prepare",
     "build": "nitro build",
     "clean": "rm -rf .turbo node_modules",
     "dev": "nitro dev --port 3001",
@@ -12,16 +13,9 @@
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "typecheck": "tsc --noEmit"
   },
-  "devDependencies": {
-    "@hermes/eslint-config": "workspace:^",
-    "@hermes/prettier-config": "workspace:^",
-    "@hermes/tailwind-config": "workspace:^",
-    "@hermes/tsconfig": "workspace:^",
-    "@types/better-sqlite3": "^7.6.8",
-    "eslint": "^8.56.0",
-    "nitropack": "^2.8.1",
-    "prettier": "^3.1.1",
-    "typescript": "^5.3.3"
+  "dependencies": {
+    "better-sqlite3": "^9.2.2",
+    "drizzle-orm": "^0.29.3"
   },
   "eslintConfig": {
     "root": true,
@@ -30,7 +24,15 @@
     ]
   },
   "prettier": "@hermes/prettier-config",
-  "dependencies": {
-    "better-sqlite3": "^9.2.2"
+  "devDependencies": {
+    "@hermes/eslint-config": "workspace:^",
+    "@hermes/prettier-config": "workspace:^",
+    "@types/better-sqlite3": "^7.6.8",
+    "@vercel/postgres": "^0.7.2",
+    "drizzle-kit": "^0.20.10",
+    "eslint": "^8.56.0",
+    "nitropack": "^2.8.1",
+    "prettier": "^3.1.1",
+    "typescript": "^5.3.3"
   }
 }
