@@ -35,6 +35,9 @@ importers:
       drizzle-orm:
         specifier: ^0.29.3
         version: 0.29.3(@types/better-sqlite3@7.6.8)(@vercel/postgres@0.7.2)(better-sqlite3@9.2.2)
+      zod:
+        specifier: ^3.22.4
+        version: 3.22.4
     devDependencies:
       '@hermes/eslint-config':
         specifier: workspace:^
