@@ -1,6 +1,14 @@
 import { defineEventHandler } from "h3";
 
 export default defineEventHandler((event) => {
-  // Extends or modify the event
-  event.context.user = { name: "Nitro" };
+  const token = event.headers.authorization;
+
+  if (!token) {
+    throw createError({
+      statusCode: 400,
+      statusMessage: "Unauthorized",
+    });
+  }
+
+  event.context.userId = token.userId;
 });

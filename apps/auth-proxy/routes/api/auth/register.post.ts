@@ -47,16 +47,9 @@ export default eventHandler(async (event) => {
 
   const hashedPin = await hashPin(body.pin);
 
-  if (currentUser.pin !== hashedPin) {
-    throw createError({
-      statusCode: 400,
-      statusMessage: "Wrong pin",
-    });
-  }
-
   const createdUser = await db.insert(user).values({
     email: body.email,
-    pin: body.pin,
+    pin: hashedPin,
     securityStamp: generateSecurityStamp(),
   });
 

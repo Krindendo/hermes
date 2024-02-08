@@ -2,12 +2,12 @@
 //import { drizzle } from "drizzle-orm/planetscale-serverless";
 
 import Database from "better-sqlite3";
-import { eq } from "drizzle-orm";
+import { eq, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/better-sqlite3";
 import { eventHandler } from "h3";
 import { z } from "zod";
 
-import { user } from "~/db/schema/user";
+import { user, userLogins } from "~/db/schema/user";
 import { hashPin } from "~/utils/authUtils";
 
 const loginSchema = z.object({
@@ -26,6 +26,11 @@ type LoginDTO = z.infer<typeof loginSchema>;
 //const conn = connect(config);
 const sqlite = new Database("sqlite.db");
 const db = drizzle(sqlite);
+const preparedUser = db
+  .select()
+  .from(user)
+  .where(eq(user.id, sql.placeholder("email")))
+  .prepare();
 
 export default eventHandler(async (event) => {
   const body = await readBody<LoginDTO>(event);
@@ -40,8 +45,7 @@ export default eventHandler(async (event) => {
     });
   }
 
-  const users = await db.select().from(user).where(eq(user.email, body.email));
-  const currentUser = users[0];
+  const currentUser = await preparedUser.all({ email: body.email })[0];
 
   if (!currentUser) {
     throw createError({
@@ -50,10 +54,10 @@ export default eventHandler(async (event) => {
     });
   }
 
-  if (currentUser.accessFailedCount > 3) {
+  if (currentUser.isLockoutEnabled) {
     throw createError({
       statusCode: 400,
-      statusMessage: "You tried to many times",
+      statusMessage: "You account is in lockout mode",
     });
   }
 
@@ -68,6 +72,11 @@ export default eventHandler(async (event) => {
       statusMessage: "Pin is not valid",
     });
   }
+
+  await db.insert(userLogins).values({
+    userId: currentUser.id,
+    loginProvider: "web",
+  });
 
   return currentUser;
 });

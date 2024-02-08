@@ -9,7 +9,7 @@ async function hashPin(pin: string) {
     // Hash the pin with the salt
     const hashedPin = await bcrypt.hash(pin, salt);
 
-    return hashedPin;
+    return hashedPin as string;
   } catch (error) {
     // Handle error
     console.error("Error hashing pin:", error);
