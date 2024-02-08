@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 //import { connect } from "@planetscale/database";
 //import { drizzle } from "drizzle-orm/planetscale-serverless";
 
@@ -9,26 +8,24 @@ import { eventHandler } from "h3";
 import { z } from "zod";
 
 import { user } from "~/db/schema/user";
+import { hashPin } from "~/utils/authUtils";
 
-const loginSchema = z
-  .object({
-    email: z.string().email(),
-    password: z.string(),
-  })
-  .required({ email: true, password: true });
+const loginSchema = z.object({
+  email: z.string().email(),
+  pin: z.string().max(4),
+});
 
 type LoginDTO = z.infer<typeof loginSchema>;
 
-const config = {
-  host: process.env.DATABASE_HOST,
-  username: process.env.DATABASE_USERNAME,
-  password: process.env.DATABASE_PASSWORD,
-};
+// const config = {
+//   host: process.env.DATABASE_HOST,
+//   username: process.env.DATABASE_USERNAME,
+//   password: process.env.DATABASE_PASSWORD,
+// };
 
 //const conn = connect(config);
 const sqlite = new Database("sqlite.db");
 const db = drizzle(sqlite);
-//const prepared = db.select().from(user).prepare();
 
 export default eventHandler(async (event) => {
   const body = await readBody<LoginDTO>(event);
@@ -43,21 +40,34 @@ export default eventHandler(async (event) => {
     });
   }
 
-  const currentUser = await db
-    .select()
-    .from(user)
-    .where(eq(user.email, body.email));
+  const users = await db.select().from(user).where(eq(user.email, body.email));
+  const currentUser = users[0];
 
-  if (!currentUser[0]) {
+  if (!currentUser) {
     throw createError({
       statusCode: 404,
       statusMessage: "User not found",
     });
   }
 
-  // await db.insert(user).values({
-  //   email: "example@gmail.com",
-  //   securityStamp: "",
-  // });
+  if (currentUser.accessFailedCount > 3) {
+    throw createError({
+      statusCode: 400,
+      statusMessage: "You tried to many times",
+    });
+  }
+
+  const hashedPin = await hashPin(body.pin);
+
+  if (currentUser.pin !== hashedPin) {
+    await db
+      .update(user)
+      .set({ accessFailedCount: currentUser.accessFailedCount + 1 });
+    throw createError({
+      statusCode: 400,
+      statusMessage: "Pin is not valid",
+    });
+  }
+
   return currentUser;
 });
