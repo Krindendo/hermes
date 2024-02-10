@@ -9,6 +9,7 @@ import { z } from "zod";
 
 import { user, userLogins } from "~/db/schema/user";
 import { hashPin } from "~/utils/authUtils";
+import { ErrorBadRequest, ErrorUnauthorized } from "~/utils/errors";
 
 const loginSchema = z.object({
   email: z.string().email(),
@@ -36,29 +37,18 @@ export default eventHandler(async (event) => {
   const body = await readBody<LoginDTO>(event);
   const validatedBody = loginSchema.safeParse(body);
 
-  if (!validatedBody.success) {
-    const errors = (validatedBody as any).error.errors;
-    const error = `${errors[0].code} for ${errors[0].path}`;
-    throw createError({
-      statusCode: 400,
-      statusMessage: error,
-    });
+  if (validatedBody.success === false) {
+    throw new ErrorBadRequest(validatedBody.error.message);
   }
 
   const currentUser = await preparedUser.all({ email: body.email })[0];
 
   if (!currentUser) {
-    throw createError({
-      statusCode: 404,
-      statusMessage: "User not found",
-    });
+    throw new ErrorUnauthorized("email or pin is not valid");
   }
 
   if (currentUser.isLockoutEnabled) {
-    throw createError({
-      statusCode: 400,
-      statusMessage: "You account is in lockout mode",
-    });
+    throw new ErrorUnauthorized("Maximum login attempts exceeded");
   }
 
   const hashedPin = await hashPin(body.pin);
@@ -67,15 +57,18 @@ export default eventHandler(async (event) => {
     await db
       .update(user)
       .set({ accessFailedCount: currentUser.accessFailedCount + 1 });
-    throw createError({
-      statusCode: 400,
-      statusMessage: "Pin is not valid",
+    await db.insert(userLogins).values({
+      userId: currentUser.id,
+      loginProvider: "web",
+      isSuccess: false,
     });
+    throw new ErrorUnauthorized("email or pin is not valid");
   }
 
   await db.insert(userLogins).values({
     userId: currentUser.id,
     loginProvider: "web",
+    isSuccess: true,
   });
 
   return currentUser;

@@ -37,7 +37,8 @@ export const userLogins = sqliteTable("user_logins", {
   userId: integer("user_id")
     .notNull()
     .references(() => user.id),
-  loginProvider: text("login_provider"),
+  isSuccess: integer("is_success", { mode: "boolean" }).notNull(),
+  loginProvider: text("login_provider").notNull(),
   logInAt: integer("created_at", { mode: "timestamp_ms" }).default(
     sql`CURRENT_TIMESTAMP`,
   ),
