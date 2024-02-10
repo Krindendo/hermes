@@ -9,6 +9,9 @@
     "dev": "nitro dev --port 3001",
     "generate:db": "drizzle-kit generate:sqlite",
     "push:db": "drizzle-kit push:sqlite",
+    "generate:db-production": "drizzle-kit generate:mysql --config=drizzle-production.config.ts",
+    "push:db-production": "drizzle-kit push:mysql --config=drizzle-production.config.ts",
+    "db-preview": "drizzle-kit studio --port 3002",
     "lint": "eslint .",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "typecheck": "tsc --noEmit"

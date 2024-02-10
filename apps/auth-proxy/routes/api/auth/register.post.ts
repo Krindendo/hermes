@@ -5,7 +5,7 @@ import { drizzle } from "drizzle-orm/better-sqlite3";
 import { eventHandler } from "h3";
 import { z } from "zod";
 
-import { user } from "~/db/schema/user";
+import { user } from "~/db/schema-sqlite/user";
 import { hashPin } from "~/utils/authUtils";
 
 const registerSchema = z.object({
@@ -23,13 +23,12 @@ const preparedUser = db
   .where(eq(user.id, sql.placeholder("email")))
   .prepare();
 
-//https://orm.drizzle.team/docs/perf-queries
-
 export default eventHandler(async (event) => {
   const body = await readBody<RegisterDTO>(event);
   const validatedBody = registerSchema.safeParse(body);
 
-  if (!validatedBody.success) {
+  if (validatedBody.success == false) {
+    console.log("error", validatedBody.error.errors);
     throw createError({
       statusCode: 400,
       statusMessage: "Validation of body is failed",
@@ -61,3 +60,5 @@ export default eventHandler(async (event) => {
 function generateSecurityStamp() {
   return crypto.randomBytes(32).toString("hex");
 }
+
+//https://orm.drizzle.team/docs/perf-queries

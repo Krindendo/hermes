@@ -7,7 +7,7 @@ import { drizzle } from "drizzle-orm/better-sqlite3";
 import { eventHandler } from "h3";
 import { z } from "zod";
 
-import { user, userLogins } from "~/db/schema/user";
+import { user, userLogins } from "~/db/schema-sqlite/user";
 import { hashPin } from "~/utils/authUtils";
 import { ErrorBadRequest, ErrorUnauthorized } from "~/utils/errors";
 

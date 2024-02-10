@@ -16,7 +16,7 @@
     "dev": "turbo dev --parallel --no-daemon",
     "dev:web": "pnpm dev --filter=nextjs --filter=auth-proxy",
     "dev:expo": "pnpm dev --filter=expo --filter=auth-proxy",
-    "dev:test": "pnpm dev --filter=auth-proxy",
+    "dev:auth": "pnpm dev --filter=auth-proxy",
     "format": "turbo format --continue -- --cache --cache-location node_modules/.cache/.prettiercache",
     "format:fix": "turbo format --continue -- --write --cache --cache-location node_modules/.cache/.prettiercache",
     "generate:db": "turbo generate:db",

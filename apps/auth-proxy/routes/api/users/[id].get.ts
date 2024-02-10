@@ -2,7 +2,7 @@ import Database from "better-sqlite3";
 import { drizzle } from "drizzle-orm/better-sqlite3";
 import { eventHandler } from "h3";
 
-import { user } from "~/db/schema/user";
+import { user } from "~/db/schema-sqlite/user";
 
 const sqlite = new Database("sqlite.db");
 const db = drizzle(sqlite);
