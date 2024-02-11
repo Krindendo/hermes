@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
-    "better-sqlite3": "^9.2.2",
+    "better-sqlite3": "^9.4.1",
     "drizzle-orm": "^0.29.3",
     "zod": "^3.22.4"
   },
@@ -32,12 +32,12 @@
   "devDependencies": {
     "@hermes/eslint-config": "workspace:^",
     "@hermes/prettier-config": "workspace:^",
-    "@types/better-sqlite3": "^7.6.8",
+    "@types/better-sqlite3": "^7.6.9",
     "@vercel/postgres": "^0.7.2",
     "drizzle-kit": "^0.20.10",
     "eslint": "^8.56.0",
     "nitropack": "^2.8.1",
-    "prettier": "^3.1.1",
+    "prettier": "^3.2.5",
     "typescript": "^5.3.3"
   }
 }
