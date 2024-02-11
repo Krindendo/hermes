@@ -1,3 +1,6 @@
 import auth from "~/utils/auth";
 
-export default eventHandler({ onRequest: [auth], async handler(event) {} });
+export default defineEventHandler({
+  onRequest: [auth],
+  async handler(event) {},
+});

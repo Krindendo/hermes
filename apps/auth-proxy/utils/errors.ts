@@ -31,7 +31,7 @@ export class ErrorNotFound extends CustomError {
 }
 
 export class ErrorUnauthorized extends CustomError {
-  constructor(message: string) {
+  constructor(message = "Access denied") {
     super(message);
     this.statusMessage = "UnauthorizedError";
     this.status = 401;
