@@ -5,7 +5,7 @@ import { drizzle } from "drizzle-orm/better-sqlite3";
 import { eventHandler } from "h3";
 import { z } from "zod";
 
-import { user } from "~/db/schema-sqlite/user";
+import { users } from "~/db/schema-sqlite/user";
 import { hashPin } from "~/utils/authUtils";
 
 const registerSchema = z.object({
@@ -19,8 +19,8 @@ const sqlite = new Database("sqlite.db");
 const db = drizzle(sqlite);
 const preparedUser = db
   .select()
-  .from(user)
-  .where(eq(user.id, sql.placeholder("email")))
+  .from(users)
+  .where(eq(users.id, sql.placeholder("email")))
   .prepare();
 
 export default eventHandler(async (event) => {
@@ -46,7 +46,7 @@ export default eventHandler(async (event) => {
 
   const hashedPin = await hashPin(body.pin);
 
-  const createdUser = await db.insert(user).values({
+  const createdUser = await db.insert(users).values({
     email: body.email,
     pin: hashedPin,
     securityStamp: generateSecurityStamp(),

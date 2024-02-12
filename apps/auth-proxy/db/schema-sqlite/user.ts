@@ -1,7 +1,7 @@
 import { sql } from "drizzle-orm";
 import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
-export const user = sqliteTable("user", {
+export const users = sqliteTable("users", {
   id: integer("id").primaryKey({ autoIncrement: true }),
   accessFailedCount: integer("accessFailedCount"),
   pin: text("pin"),
@@ -21,25 +21,34 @@ export const user = sqliteTable("user", {
   ),
 });
 
-export const userToken = sqliteTable("user_token", {
+export type NewUser = typeof users.$inferInsert;
+export type User = typeof users.$inferSelect;
+
+export const userTokens = sqliteTable("user_tokens", {
   id: integer("id").primaryKey({ autoIncrement: true }),
   userId: integer("user_id")
     .notNull()
-    .references(() => user.id),
+    .references(() => users.id),
   token: text("token"),
   createdAt: integer("create_at", { mode: "timestamp_ms" }).default(
     sql`CURRENT_TIMESTAMP`,
   ),
 });
 
+export type NewUserTokens = typeof userTokens.$inferInsert;
+export type UserTokens = typeof userTokens.$inferSelect;
+
 export const userLogins = sqliteTable("user_logins", {
   id: integer("id").primaryKey({ autoIncrement: true }),
   userId: integer("user_id")
     .notNull()
-    .references(() => user.id),
+    .references(() => users.id),
   isSuccess: integer("is_success", { mode: "boolean" }).notNull(),
   loginProvider: text("login_provider", { enum: ["web", "mobile"] }).notNull(),
   logInAt: integer("created_at", { mode: "timestamp_ms" }).default(
     sql`CURRENT_TIMESTAMP`,
   ),
 });
+
+export type NewUserLogins = typeof userLogins.$inferInsert;
+export type UserLogins = typeof userLogins.$inferSelect;
