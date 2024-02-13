@@ -1,6 +1,6 @@
 import Database from "better-sqlite3";
 import type { SQL } from "drizzle-orm";
-import { eq } from "drizzle-orm";
+import { eq, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/better-sqlite3";
 
 import type { NewUser } from "~/db/schema-sqlite/user";
@@ -37,7 +37,10 @@ export async function createUser(userData: NewUser) {
   return await db.insert(users).values(userData);
 }
 
-export async function updateUserById(userId: number, userData: NewUser) {
+export async function updateUserById(
+  userId: number,
+  userData: Partial<NewUser>,
+) {
   const updatedUser = await db
     .update(users)
     .set(userData)
@@ -55,4 +58,14 @@ export async function deleteUserById(userId: number) {
     throw new ErrorNotFound(`User with ID ${userId} not found`);
   }
   return deletedUser;
+}
+
+/* --- prepares --- */
+
+export function getUserByEmailPrep() {
+  return db
+    .select()
+    .from(users)
+    .where(eq(users.id, sql.placeholder("email")))
+    .prepare();
 }

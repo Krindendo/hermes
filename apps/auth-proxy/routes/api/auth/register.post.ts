@@ -1,11 +1,8 @@
 import crypto from "crypto";
-import Database from "better-sqlite3";
-import { eq, sql } from "drizzle-orm";
-import { drizzle } from "drizzle-orm/better-sqlite3";
 import { eventHandler } from "h3";
 import { z } from "zod";
 
-import { users } from "~/db/schema-sqlite/user";
+import { createUser, getUserByEmailPrep } from "~/service/user.service";
 import { hashPin } from "~/utils/authUtils";
 
 const registerSchema = z.object({
@@ -15,38 +12,25 @@ const registerSchema = z.object({
 
 type RegisterDTO = z.infer<typeof registerSchema>;
 
-const sqlite = new Database("sqlite.db");
-const db = drizzle(sqlite);
-const preparedUser = db
-  .select()
-  .from(users)
-  .where(eq(users.id, sql.placeholder("email")))
-  .prepare();
+const getUser = getUserByEmailPrep();
 
 export default eventHandler(async (event) => {
   const body = await readBody<RegisterDTO>(event);
   const validatedBody = registerSchema.safeParse(body);
 
   if (validatedBody.success == false) {
-    console.log("error", validatedBody.error.errors);
-    throw createError({
-      statusCode: 400,
-      statusMessage: "Validation of body is failed",
-    });
+    throw new ErrorBadRequest(validatedBody.error.message);
   }
 
-  const currentUser = await preparedUser.all({ email: body.email })[0];
+  const currentUser = getUser.all({ email: body.email })[0];
 
   if (currentUser) {
-    throw createError({
-      statusCode: 400,
-      statusMessage: "user exists",
-    });
+    throw new ErrorBadRequest("user exists");
   }
 
   const hashedPin = await hashPin(body.pin);
 
-  const createdUser = await db.insert(users).values({
+  const createdUser = await createUser({
     email: body.email,
     pin: hashedPin,
     securityStamp: generateSecurityStamp(),

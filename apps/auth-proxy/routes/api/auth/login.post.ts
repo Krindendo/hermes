@@ -1,14 +1,12 @@
 //import { connect } from "@planetscale/database";
 //import { drizzle } from "drizzle-orm/planetscale-serverless";
 
-import Database from "better-sqlite3";
-import { eq, sql } from "drizzle-orm";
-import { drizzle } from "drizzle-orm/better-sqlite3";
+import bcrypt from "bcrypt";
 import { eventHandler } from "h3";
 import { z } from "zod";
 
-import { userLogins, users } from "~/db/schema-sqlite/user";
-import { hashPin } from "~/utils/authUtils";
+import { createUserLogin } from "~/service/user-login.service";
+import { getUserByEmailPrep, updateUserById } from "~/service/user.service";
 import { ErrorBadRequest, ErrorUnauthorized } from "~/utils/errors";
 
 const loginSchema = z.object({
@@ -25,13 +23,7 @@ type LoginDTO = z.infer<typeof loginSchema>;
 // };
 
 //const conn = connect(config);
-const sqlite = new Database("sqlite.db");
-const db = drizzle(sqlite);
-const preparedUser = db
-  .select()
-  .from(users)
-  .where(eq(users.id, sql.placeholder("email")))
-  .prepare();
+const getUser = getUserByEmailPrep();
 
 export default eventHandler(async (event) => {
   const body = await readBody<LoginDTO>(event);
@@ -41,7 +33,7 @@ export default eventHandler(async (event) => {
     throw new ErrorBadRequest(validatedBody.error.message);
   }
 
-  const currentUser = await preparedUser.all({ email: body.email })[0];
+  const currentUser = getUser.all({ email: body.email })[0];
 
   if (!currentUser) {
     throw new ErrorUnauthorized("email or pin is not valid");
@@ -51,21 +43,23 @@ export default eventHandler(async (event) => {
     throw new ErrorUnauthorized("Maximum login attempts exceeded");
   }
 
-  const hashedPin = await hashPin(body.pin);
+  const isMatch = await bcrypt.compare(body.pin, currentUser.pin);
 
-  if (currentUser.pin !== hashedPin) {
-    await db
-      .update(users)
-      .set({ accessFailedCount: currentUser.accessFailedCount + 1 });
-    await db.insert(userLogins).values({
+  if (!isMatch) {
+    await updateUserById(currentUser.id, {
+      accessFailedCount: currentUser.accessFailedCount + 1,
+    });
+
+    await createUserLogin({
       userId: currentUser.id,
       loginProvider: "web",
       isSuccess: false,
     });
+
     throw new ErrorUnauthorized("email or pin is not valid");
   }
 
-  await db.insert(userLogins).values({
+  await createUserLogin({
     userId: currentUser.id,
     loginProvider: "web",
     isSuccess: true,
