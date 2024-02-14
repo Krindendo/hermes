@@ -5,6 +5,10 @@ import bcrypt from "bcrypt";
 import { eventHandler } from "h3";
 import { z } from "zod";
 
+import {
+  generateAccessToken,
+  generateRefreshToken,
+} from "~/service/auth.service";
 import { createUserLogin } from "~/service/user-login.service";
 import { getUserByEmailPrep, updateUserById } from "~/service/user.service";
 import { ErrorBadRequest, ErrorUnauthorized } from "~/utils/errors";
@@ -65,5 +69,11 @@ export default eventHandler(async (event) => {
     isSuccess: true,
   });
 
-  return currentUser;
+  const accessToken = generateAccessToken(currentUser.id);
+  const refreshToken = generateRefreshToken(
+    currentUser.id,
+    currentUser.securityStamp,
+  );
+
+  return { accessToken, refreshToken, userId: currentUser.id };
 });

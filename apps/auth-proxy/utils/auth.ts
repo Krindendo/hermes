@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 
 import { ErrorUnauthorized } from "./errors";
 
-const secretKey = process.env.SECRET_KEY_FOR_JWT;
+const SECRET_KEY_FOR_JWT = process.env.SECRET_KEY_FOR_JWT;
 
 export default defineRequestMiddleware((event) => {
   const authorization = event.headers.get("authorization");
@@ -14,9 +14,7 @@ export default defineRequestMiddleware((event) => {
   const token = authorization.slice(7);
 
   try {
-    //const decoded = jwtDecode(token);
-
-    const decoded = jwt.verify(token, secretKey);
+    const decoded = jwt.verify(token, SECRET_KEY_FOR_JWT);
     console.log("decoded", decoded);
   } catch (error) {
     throw new ErrorBadRequest("Invalid token");
