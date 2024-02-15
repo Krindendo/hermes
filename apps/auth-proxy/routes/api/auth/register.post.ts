@@ -30,13 +30,12 @@ export default eventHandler(async (event) => {
 
   const hashedPin = await hashPin(body.pin);
 
-  const createdUser = await createUser({
+  await createUser({
     email: body.email,
     pin: hashedPin,
     securityStamp: generateSecurityStamp(),
+    emailConfirmationCode: generateSecurityStamp(),
   });
-
-  console.log("createdUser", createdUser);
 
   return { messange: "User successfully registered" };
 });

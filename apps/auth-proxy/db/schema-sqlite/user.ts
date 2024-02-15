@@ -3,15 +3,19 @@ import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
 export const users = sqliteTable("users", {
   id: integer("id").primaryKey({ autoIncrement: true }),
-  accessFailedCount: integer("accessFailedCount"),
-  pin: text("pin"),
+  accessFailedCount: integer("accessFailedCount").default(0),
+  pin: text("pin").notNull(),
   securityStamp: text("security_stamp").notNull(),
   email: text("email").unique(),
-  emailConfirmationCode: text("email_confirmation_code"),
-  isActive: integer("is_active", { mode: "boolean" }),
-  isDeleted: integer("is_deleted", { mode: "boolean" }),
-  isEmailConfirmed: integer("is_email_confirmed", { mode: "boolean" }),
-  isLockoutEnabled: integer("is_lockout_enabled", { mode: "boolean" }),
+  emailConfirmationCode: text("email_confirmation_code").notNull(),
+  isActive: integer("is_active", { mode: "boolean" }).default(true),
+  isDeleted: integer("is_deleted", { mode: "boolean" }).default(false),
+  isEmailConfirmed: integer("is_email_confirmed", { mode: "boolean" }).default(
+    false,
+  ),
+  isLockoutEnabled: integer("is_lockout_enabled", { mode: "boolean" }).default(
+    false,
+  ),
   lockoutEndDateUtc: integer("lockout_end_date_utc", { mode: "timestamp_ms" }),
   createdAt: integer("create_at", { mode: "timestamp_ms" }).default(
     sql`CURRENT_TIMESTAMP`,

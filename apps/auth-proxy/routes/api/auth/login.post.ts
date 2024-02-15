@@ -10,7 +10,11 @@ import {
   generateRefreshToken,
 } from "~/service/auth.service";
 import { createUserLogin } from "~/service/user-login.service";
-import { getUserByEmailPrep, updateUserById } from "~/service/user.service";
+import {
+  getUserByEmail,
+  getUserByEmailPrep,
+  updateUserById,
+} from "~/service/user.service";
 import { ErrorBadRequest, ErrorUnauthorized } from "~/utils/errors";
 
 const loginSchema = z.object({
@@ -27,7 +31,7 @@ type LoginDTO = z.infer<typeof loginSchema>;
 // };
 
 //const conn = connect(config);
-const getUser = getUserByEmailPrep();
+//const getUser = getUserByEmailPrep();
 
 export default eventHandler(async (event) => {
   const body = await readBody<LoginDTO>(event);
@@ -37,21 +41,33 @@ export default eventHandler(async (event) => {
     throw new ErrorBadRequest(validatedBody.error.message);
   }
 
-  const currentUser = getUser.all({ email: body.email })[0];
+  const currentUser = await getUserByEmail(body.email);
 
   if (!currentUser) {
     throw new ErrorUnauthorized("email or pin is not valid");
   }
 
   if (currentUser.isLockoutEnabled) {
-    throw new ErrorUnauthorized("Maximum login attempts exceeded");
+    throw new ErrorUnauthorized("Account is in lockout mode");
   }
 
-  const isMatch = await bcrypt.compare(body.pin, currentUser.pin);
+  if (currentUser.accessFailedCount > 2) {
+    if (currentUser.lockoutEndDateUtc < new Date()) {
+      currentUser.accessFailedCount = 0;
+      await updateUserById(currentUser.id, {
+        accessFailedCount: 0,
+      });
+    } else {
+      throw new ErrorUnauthorized("Maximum login attempts exceeded");
+    }
+  }
 
-  if (!isMatch) {
+  const isPasswordMatch = await bcrypt.compare(body.pin, currentUser.pin);
+
+  if (!isPasswordMatch) {
     await updateUserById(currentUser.id, {
       accessFailedCount: currentUser.accessFailedCount + 1,
+      lockoutEndDateUtc: new Date(Date.now() + 30 * 60 * 1000),
     });
 
     await createUserLogin({
