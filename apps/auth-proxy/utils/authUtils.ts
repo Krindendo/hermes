@@ -1,3 +1,4 @@
+import crypto from "crypto";
 import bcrypt from "bcrypt";
 
 async function hashPin(pin: string) {
@@ -17,4 +18,8 @@ async function hashPin(pin: string) {
   }
 }
 
-export { hashPin };
+function generateSecurityStamp() {
+  return crypto.randomBytes(32).toString("hex");
+}
+
+export { hashPin, generateSecurityStamp };

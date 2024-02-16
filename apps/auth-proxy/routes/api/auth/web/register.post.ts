@@ -3,7 +3,7 @@ import { eventHandler } from "h3";
 import { z } from "zod";
 
 import { createUser, getUserByEmailPrep } from "~/service/user.service";
-import { hashPin } from "~/utils/authUtils";
+import { generateSecurityStamp, hashPin } from "~/utils/authUtils";
 
 const registerSchema = z.object({
   email: z.string().email(),
@@ -22,7 +22,7 @@ export default eventHandler(async (event) => {
     throw new ErrorBadRequest(validatedBody.error.message);
   }
 
-  const currentUser = getUser.all({ email: body.email })[0];
+  const [currentUser] = getUser.all({ email: body.email });
 
   if (currentUser) {
     throw new ErrorBadRequest("user exists");
@@ -39,9 +39,5 @@ export default eventHandler(async (event) => {
 
   return { messange: "User successfully registered" };
 });
-
-function generateSecurityStamp() {
-  return crypto.randomBytes(32).toString("hex");
-}
 
 //https://orm.drizzle.team/docs/perf-queries

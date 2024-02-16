@@ -10,20 +10,18 @@ const sqlite = new Database("sqlite.db");
 const db = drizzle(sqlite);
 
 export async function getUserById(userId: number) {
-  const results = await db.select().from(users).where(eq(users.id, userId));
-  const result = results[0];
+  const [result] = await db.select().from(users).where(eq(users.id, userId));
 
-  if (!results) {
+  if (!result) {
     throw new ErrorNotFound(`User with ID ${userId} not found`);
   }
   return result;
 }
 
 export async function getUserByEmail(email: string) {
-  const results = await db.select().from(users).where(eq(users.email, email));
-  const result = results[0];
+  const [result] = await db.select().from(users).where(eq(users.email, email));
 
-  if (!results) {
+  if (!result) {
     throw new ErrorNotFound(`User with email ${email} not found`);
   }
   return result;

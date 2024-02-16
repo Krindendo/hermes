@@ -5,16 +5,10 @@ import bcrypt from "bcrypt";
 import { eventHandler } from "h3";
 import { z } from "zod";
 
-import {
-  generateAccessToken,
-  generateRefreshToken,
-} from "~/service/auth.service";
+import { createAcceptToken } from "~/service/user-accept-tokens.service";
 import { createUserLogin } from "~/service/user-login.service";
-import {
-  getUserByEmail,
-  getUserByEmailPrep,
-  updateUserById,
-} from "~/service/user.service";
+import { getUserByEmail, updateUserById } from "~/service/user.service";
+import { generateSecurityStamp } from "~/utils/authUtils";
 import { ErrorBadRequest, ErrorUnauthorized } from "~/utils/errors";
 
 const loginSchema = z.object({
@@ -79,17 +73,12 @@ export default eventHandler(async (event) => {
     throw new ErrorUnauthorized("email or pin is not valid");
   }
 
-  await createUserLogin({
+  const acceptToken = generateSecurityStamp();
+
+  await createAcceptToken({
     userId: currentUser.id,
-    loginProvider: "web",
-    isSuccess: true,
+    token: acceptToken,
   });
 
-  const accessToken = generateAccessToken(currentUser.id);
-  const refreshToken = generateRefreshToken(
-    currentUser.id,
-    currentUser.securityStamp,
-  );
-
-  return { accessToken, refreshToken, userId: currentUser.id };
+  return { acceptToken: acceptToken, userId: currentUser.id };
 });

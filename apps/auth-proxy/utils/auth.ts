@@ -20,5 +20,5 @@ export default defineRequestMiddleware((event) => {
     throw new ErrorBadRequest("Invalid token");
   }
 
-  //event.context.userId = token.userId;
+  event.context.userId = 1;
 });

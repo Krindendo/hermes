@@ -28,7 +28,7 @@ export const users = sqliteTable("users", {
 export type NewUser = typeof users.$inferInsert;
 export type User = typeof users.$inferSelect;
 
-export const userTokens = sqliteTable("user_tokens", {
+export const userRefreshTokens = sqliteTable("user_refresh_tokens", {
   id: integer("id").primaryKey({ autoIncrement: true }),
   userId: integer("user_id")
     .notNull()
@@ -39,8 +39,23 @@ export const userTokens = sqliteTable("user_tokens", {
   ),
 });
 
-export type NewUserTokens = typeof userTokens.$inferInsert;
-export type UserTokens = typeof userTokens.$inferSelect;
+export type NewUserRefreshTokens = typeof userRefreshTokens.$inferInsert;
+export type UserRefreshTokens = typeof userRefreshTokens.$inferSelect;
+
+export const userAcceptTokens = sqliteTable("user_accept_tokens", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  userId: integer("user_id")
+    .notNull()
+    .references(() => users.id),
+  token: text("token"),
+  isAccepted: integer("is_accepted", { mode: "boolean" }).default(false),
+  createdAt: integer("create_at", { mode: "timestamp_ms" }).default(
+    sql`CURRENT_TIMESTAMP`,
+  ),
+});
+
+export type NewUserAcceptTokens = typeof userAcceptTokens.$inferInsert;
+export type UserAcceptTokens = typeof userAcceptTokens.$inferSelect;
 
 export const userLogins = sqliteTable("user_logins", {
   id: integer("id").primaryKey({ autoIncrement: true }),
