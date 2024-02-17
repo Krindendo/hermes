@@ -11,12 +11,12 @@ import { getUserByEmail, updateUserById } from "~/service/user.service";
 import { generateSecurityStamp } from "~/utils/authUtils";
 import { ErrorBadRequest, ErrorUnauthorized } from "~/utils/errors";
 
-const loginSchema = z.object({
+const requestSchema = z.object({
   email: z.string().email(),
   pin: z.string().max(4),
 });
 
-type LoginDTO = z.infer<typeof loginSchema>;
+type RequestDTO = z.infer<typeof requestSchema>;
 
 // const config = {
 //   host: process.env.DATABASE_HOST,
@@ -28,8 +28,8 @@ type LoginDTO = z.infer<typeof loginSchema>;
 //const getUser = getUserByEmailPrep();
 
 export default eventHandler(async (event) => {
-  const body = await readBody<LoginDTO>(event);
-  const validatedBody = loginSchema.safeParse(body);
+  const body = await readBody<RequestDTO>(event);
+  const validatedBody = requestSchema.safeParse(body);
 
   if (validatedBody.success === false) {
     throw new ErrorBadRequest(validatedBody.error.message);
@@ -38,7 +38,11 @@ export default eventHandler(async (event) => {
   const currentUser = await getUserByEmail(body.email);
 
   if (!currentUser) {
-    throw new ErrorUnauthorized("email or pin is not valid");
+    throw new ErrorUnauthorized("Email or pin is not valid");
+  }
+
+  if (!currentUser.isEmailConfirmed) {
+    throw new ErrorBadRequest("Email is not confirmed");
   }
 
   if (currentUser.isLockoutEnabled) {
@@ -79,6 +83,8 @@ export default eventHandler(async (event) => {
     userId: currentUser.id,
     token: acceptToken,
   });
+
+  // send notification to mobile app
 
   return { acceptToken: acceptToken, userId: currentUser.id };
 });

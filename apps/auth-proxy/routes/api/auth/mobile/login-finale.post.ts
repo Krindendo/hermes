@@ -6,18 +6,18 @@ import {
   generateRefreshToken,
 } from "~/service/auth.service";
 import { createUserLogin } from "~/service/user-login.service";
-import { getUserByEmail } from "~/service/user.service";
+import { getUserByEmail, updateUserById } from "~/service/user.service";
 
-const loginMobileSchema = z.object({
+const requestSchema = z.object({
   email: z.string().email(),
-  password: z.string(),
+  emailConfirmationCode: z.string(),
 });
 
-type loginMobileDTO = z.infer<typeof loginMobileSchema>;
+type RequestDTO = z.infer<typeof requestSchema>;
 
 export default eventHandler(async (event) => {
-  const body = await readBody<loginMobileDTO>(event);
-  const validatedBody = loginMobileSchema.safeParse(body);
+  const body = await readBody<RequestDTO>(event);
+  const validatedBody = requestSchema.safeParse(body);
 
   if (validatedBody.success === false) {
     throw new ErrorBadRequest(validatedBody.error.message);
@@ -28,6 +28,18 @@ export default eventHandler(async (event) => {
   if (!currentUser) {
     throw new ErrorUnauthorized("email is not valid");
   }
+
+  if (currentUser.isEmailConfirmed) {
+    throw new ErrorBadRequest("Email is already confirmed");
+  }
+
+  if (currentUser.emailConfirmationCode !== body.emailConfirmationCode) {
+    throw new ErrorUnauthorized("confirmationCode is not valid");
+  }
+
+  await updateUserById(currentUser.id, {
+    isEmailConfirmed: true,
+  });
 
   await createUserLogin({
     userId: currentUser.id,

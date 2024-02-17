@@ -5,20 +5,24 @@ import {
   generateAccessToken,
   generateRefreshToken,
 } from "~/service/auth.service";
-import { getAcceptTokenByUserId } from "~/service/user-accept-tokens.service";
+import {
+  deleteAcceptToken,
+  getAcceptTokenByUserId,
+} from "~/service/user-accept-tokens.service";
 import { createUserLogin } from "~/service/user-login.service";
+import { createRefreshToken } from "~/service/user-refresh-tokens.service";
 import { getUserById } from "~/service/user.service";
 
-const loginPollSchema = z.object({
+const requestSchema = z.object({
   userId: z.number(),
   acceptToken: z.string(),
 });
 
-type loginPollDTO = z.infer<typeof loginPollSchema>;
+type RequestDTO = z.infer<typeof requestSchema>;
 
 export default eventHandler(async (event) => {
-  const body = await readBody<loginPollDTO>(event);
-  const validatedBody = loginPollSchema.safeParse(body);
+  const body = await readBody<RequestDTO>(event);
+  const validatedBody = requestSchema.safeParse(body);
 
   if (validatedBody.success === false) {
     throw new ErrorBadRequest(validatedBody.error.message);
@@ -36,9 +40,13 @@ export default eventHandler(async (event) => {
 
   const acceptToken = await getAcceptTokenByUserId(currentUser.id);
 
-  if (!acceptToken || acceptToken?.isAccepted === true) {
-    throw new ErrorUnauthorized("Token is already taken");
+  if (!acceptToken) {
+    throw new ErrorUnauthorized(
+      `Token with email ${body.acceptToken} not found`,
+    );
   }
+
+  await deleteAcceptToken(acceptToken.id);
 
   await createUserLogin({
     userId: currentUser.id,
@@ -51,6 +59,8 @@ export default eventHandler(async (event) => {
     currentUser.id,
     currentUser.securityStamp,
   );
+
+  await createRefreshToken({ userId: currentUser.id, token: refreshToken });
 
   return { accessToken, refreshToken, userId: currentUser.id };
 });
