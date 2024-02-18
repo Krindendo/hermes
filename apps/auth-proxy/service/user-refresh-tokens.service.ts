@@ -18,3 +18,10 @@ export async function deleteRefreshToken(id: number) {
     .where(eq(userRefreshTokens.id, id));
   return deletedLogins;
 }
+
+export async function deleteRefreshTokenWithUserId(userId: number) {
+  const deletedLogins = await db
+    .delete(userRefreshTokens)
+    .where(eq(userRefreshTokens.userId, userId));
+  return deletedLogins;
+}

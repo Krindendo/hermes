@@ -5,7 +5,7 @@ const SECRET_KEY_FOR_JWT = process.env.SECRET_KEY_FOR_JWT;
 export function generateAccessToken(userId: number) {
   const payload = { userId, issuedAt: Date.now() };
   const token = jwt.sign(payload, SECRET_KEY_FOR_JWT, { expiresIn: 15 * 60 });
-  return token as string;
+  return `Bearer ${token}`;
 }
 
 export function generateRefreshToken(userId: number, securityStamp: string) {

@@ -5,6 +5,13 @@ import { ErrorUnauthorized } from "./errors";
 
 const SECRET_KEY_FOR_JWT = process.env.SECRET_KEY_FOR_JWT;
 
+interface DecodeJwt {
+  userId: number;
+  issuedAt: number;
+  iat: number;
+  exp: number;
+}
+
 export default defineRequestMiddleware((event) => {
   const authorization = event.headers.get("authorization");
 
@@ -15,10 +22,8 @@ export default defineRequestMiddleware((event) => {
 
   try {
     const decoded = jwt.verify(token, SECRET_KEY_FOR_JWT);
-    console.log("decoded", decoded);
+    event.context.userId = decoded.userId;
   } catch (error) {
     throw new ErrorBadRequest("Invalid token");
   }
-
-  event.context.userId = 1;
 });
