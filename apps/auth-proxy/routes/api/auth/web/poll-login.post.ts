@@ -2,7 +2,8 @@ import { eventHandler } from "h3";
 import { z } from "zod";
 
 import {
-  generateAccessToken,
+  generateJWTAccessToken,
+  generateJWTRefreshToken,
   generateRefreshToken,
 } from "~/service/auth.service";
 import {
@@ -54,13 +55,23 @@ export default eventHandler(async (event) => {
     isSuccess: true,
   });
 
-  const accessToken = generateAccessToken(currentUser.id);
-  const refreshToken = generateRefreshToken(
+  const refreshTokenCode = generateRefreshToken();
+
+  const accessToken = generateJWTAccessToken(currentUser.id);
+  const refreshToken = generateJWTRefreshToken(
     currentUser.id,
-    currentUser.securityStamp,
+    refreshTokenCode,
   );
 
-  await createRefreshToken({ userId: currentUser.id, token: refreshToken });
+  const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000);
+
+  await createRefreshToken({
+    userId: currentUser.id,
+    token: refreshTokenCode,
+    type: "refresh",
+    origin: "web",
+    expiresAt,
+  });
 
   return { accessToken, refreshToken, userId: currentUser.id };
 });

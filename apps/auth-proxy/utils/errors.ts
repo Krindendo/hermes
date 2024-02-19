@@ -37,3 +37,11 @@ export class ErrorUnauthorized extends CustomError {
     this.status = 401;
   }
 }
+
+export class ErrorInternalServer extends CustomError {
+  constructor(message = "Internal server error") {
+    super(message);
+    this.statusMessage = "InternalServerError";
+    this.status = 500;
+  }
+}

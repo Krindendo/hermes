@@ -34,7 +34,6 @@ export default eventHandler(async (event) => {
   await createUser({
     email: body.email,
     pin: hashedPin,
-    securityStamp: generateSecurityStamp(),
     emailConfirmationCode,
   });
 

@@ -5,7 +5,6 @@ export const users = sqliteTable("users", {
   id: integer("id").primaryKey({ autoIncrement: true }),
   accessFailedCount: integer("accessFailedCount").default(0),
   pin: text("pin").notNull(),
-  securityStamp: text("security_stamp").notNull(),
   email: text("email").unique(),
   emailConfirmationCode: text("email_confirmation_code").notNull(),
   isActive: integer("is_active", { mode: "boolean" }).default(true),
@@ -33,7 +32,11 @@ export const userRefreshTokens = sqliteTable("user_refresh_tokens", {
   userId: integer("user_id")
     .notNull()
     .references(() => users.id),
-  token: text("token"),
+  token: text("token").notNull(),
+  type: text("type", { enum: ["refresh", "accept"] }).notNull(),
+  origin: text("origin", { enum: ["web", "mobile"] }).notNull(),
+  ipAddress: text("ip_address"),
+  expiresAt: integer("expires_at", { mode: "timestamp_ms" }).notNull(),
   createdAt: integer("create_at", { mode: "timestamp_ms" }).default(
     sql`CURRENT_TIMESTAMP`,
   ),

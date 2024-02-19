@@ -1,7 +1,5 @@
-import { deleteRefreshTokenWithUserId } from "~/service/user-refresh-tokens.service";
-import { updateUserById } from "~/service/user.service";
+import { deleteRefreshTokens } from "~/service/user-refresh-tokens.service";
 import auth from "~/utils/auth";
-import { generateSecurityStamp } from "~/utils/authUtils";
 
 export default defineEventHandler({
   onRequest: [auth],
@@ -9,10 +7,9 @@ export default defineEventHandler({
     if (!event.context.userId) {
       throw new ErrorBadRequest("user id is missing");
     }
-    await updateUserById(event.context.userId, {
-      securityStamp: generateSecurityStamp(),
-    });
 
-    await deleteRefreshTokenWithUserId(event.context.userId);
+    await deleteRefreshTokens(event.context.userId);
+
+    return { message: "User successfully logout from all devices" };
   },
 });
