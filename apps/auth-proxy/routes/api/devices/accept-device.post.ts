@@ -19,5 +19,9 @@ export default defineEventHandler({
     if (validatedBody.success === false) {
       throw new ErrorBadRequest(validatedBody.error.message);
     }
+
+    if (!event.context.userId) {
+      throw new ErrorBadRequest("user id is missing");
+    }
   },
 });

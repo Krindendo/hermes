@@ -63,7 +63,7 @@ export default defineEventHandler(async (event) => {
     userId: currentUser.id,
     token: refreshTokenCode,
     type: "refresh",
-    origin: "web",
+    origin: "mobile",
     expiresAt,
   });
 
