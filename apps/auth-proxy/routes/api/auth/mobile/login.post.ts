@@ -1,4 +1,4 @@
-import { eventHandler } from "h3";
+import { defineEventHandler } from "h3";
 import { z } from "zod";
 
 import { getUserByEmail, updateUserById } from "~/service/user.service";
@@ -10,7 +10,7 @@ const requestSchema = z.object({
 
 type RequestDTO = z.infer<typeof requestSchema>;
 
-export default eventHandler(async (event) => {
+export default defineEventHandler(async (event) => {
   const body = await readBody<RequestDTO>(event);
   const validatedBody = requestSchema.safeParse(body);
 

@@ -2,7 +2,7 @@
 //import { drizzle } from "drizzle-orm/planetscale-serverless";
 
 import bcrypt from "bcrypt";
-import { eventHandler } from "h3";
+import { defineEventHandler } from "h3";
 import { z } from "zod";
 
 import { createAcceptToken } from "~/service/user-accept-tokens.service";
@@ -27,7 +27,7 @@ type RequestDTO = z.infer<typeof requestSchema>;
 //const conn = connect(config);
 //const getUser = getUserByEmailPrep();
 
-export default eventHandler(async (event) => {
+export default defineEventHandler(async (event) => {
   const body = await readBody<RequestDTO>(event);
   const validatedBody = requestSchema.safeParse(body);
 

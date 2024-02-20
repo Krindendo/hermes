@@ -1,4 +1,4 @@
-import { eventHandler } from "h3";
+import { defineEventHandler } from "h3";
 import { z } from "zod";
 
 import { createUser, getUserByEmailPrep } from "~/service/user.service";
@@ -13,7 +13,7 @@ type RequestDTO = z.infer<typeof requestSchema>;
 
 const getUser = getUserByEmailPrep();
 
-export default eventHandler(async (event) => {
+export default defineEventHandler(async (event) => {
   const body = await readBody<RequestDTO>(event);
   const validatedBody = requestSchema.safeParse(body);
 

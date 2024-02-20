@@ -1,3 +1,5 @@
+import { defineEventHandler } from "h3";
+
 import { deleteRefreshTokens } from "~/service/user-refresh-tokens.service";
 import auth from "~/utils/auth";
 
