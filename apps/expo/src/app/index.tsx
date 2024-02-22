@@ -8,7 +8,7 @@ import { useSession } from "~/components/ctx";
 export default function LoginScreen() {
   const { signIn } = useSession();
   return (
-    <SafeAreaView className="bg-slate-100">
+    <SafeAreaView>
       {/* <Stack
         screenOptions={{
           gestureEnabled: false,
@@ -16,18 +16,17 @@ export default function LoginScreen() {
           title: "Home Page",
         }}
       /> */}
-      <View className="h-full w-full p-4">
+      <View>
         <Text>Login</Text>
         <TextInput />
 
         <Pressable
-          className="rounded-lg bg-red-400 p-4"
           onPress={() => {
             signIn();
             router.replace("/access");
           }}
         >
-          <Text className="text-center text-lg font-bold">Sign in</Text>
+          <Text>Sign in</Text>
         </Pressable>
       </View>
     </SafeAreaView>
