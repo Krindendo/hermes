@@ -5,8 +5,7 @@
     "paths": {
       "~/*": ["./src/*"]
     },
-    "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json",
-    "types": ["nativewind/types"]
+    "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json"
   },
   "include": [
     "expo-plugins",
