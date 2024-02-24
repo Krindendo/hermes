@@ -1,34 +1,62 @@
 import React from "react";
-import { Pressable, Text, TextInput, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import {
+  Pressable,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TextInput,
+} from "react-native";
 import { router, Stack } from "expo-router";
 
-import { useSession } from "~/components/ctx";
-
 export default function LoginScreen() {
-  const { signIn } = useSession();
+  const [email, onChangeEmail] = React.useState("");
+
+  const handleSubmit = async () => {
+    const body = JSON.stringify({ email });
+
+    try {
+      const response = await fetch(
+        "http://192.168.100.4:3001/api/auth/mobile/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body,
+        },
+      );
+      const json = await response.json();
+      console.log("json", json);
+
+      if (json.message) {
+        router.replace("/enter-code");
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
   return (
     <SafeAreaView>
-      {/* <Stack
-        screenOptions={{
-          gestureEnabled: false,
-          headerShown: false,
-          title: "Home Page",
-        }}
-      /> */}
-      <View>
-        <Text>Login</Text>
-        <TextInput />
+      <Text>Login</Text>
+      <Text>Enter email</Text>
 
-        <Pressable
-          onPress={() => {
-            signIn();
-            router.replace("/access");
-          }}
-        >
-          <Text>Sign in</Text>
-        </Pressable>
-      </View>
+      <TextInput
+        style={styles.input}
+        onChangeText={onChangeEmail}
+        value={email}
+      />
+
+      <Pressable onPress={handleSubmit}>
+        <Text>Sign in</Text>
+      </Pressable>
     </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+  },
+});
