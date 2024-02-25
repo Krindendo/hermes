@@ -1,4 +1,4 @@
-import { Pressable, Text, View } from "react-native";
+import { Pressable, SafeAreaView, Text, View } from "react-native";
 
 export default function AccessScreen() {
   const handleLogoutFromWeb = () => {
@@ -8,13 +8,13 @@ export default function AccessScreen() {
     console.log("logout from all");
   };
   return (
-    <View>
+    <SafeAreaView>
       <Pressable onPress={handleLogoutFromWeb}>
         <Text>Sign out from web</Text>
       </Pressable>
       <Pressable onPress={handleLogoutFromAllDevices}>
         <Text>Sign out from all device</Text>
       </Pressable>
-    </View>
+    </SafeAreaView>
   );
 }

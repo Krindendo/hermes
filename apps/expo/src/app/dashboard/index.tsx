@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { Link } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 
@@ -9,14 +9,16 @@ export default function LoginScreen() {
     console.log("pressed device with id", deviceId);
   };
   return (
-    <View style={styles.container}>
-      <Text>Dashboard</Text>
-      <Text>Accept Devices</Text>
-      <Pressable onPress={() => handleAcceptDevice(12)}>
-        <Text>Accept user</Text>
-      </Pressable>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView>
+      <View style={styles.container}>
+        <Text>Dashboard</Text>
+        <Text>Accept Devices</Text>
+        <Pressable onPress={() => handleAcceptDevice(12)}>
+          <Text>Accept user</Text>
+        </Pressable>
+        <StatusBar style="auto" />
+      </View>
+    </SafeAreaView>
   );
 }
 

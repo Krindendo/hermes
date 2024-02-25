@@ -13,7 +13,7 @@ export default function LoginScreen() {
 
   const handleSubmit = async () => {
     const body = JSON.stringify({ email });
-
+    console.log("body", body);
     try {
       const response = await fetch(
         "http://192.168.100.4:3001/api/auth/mobile/login",
@@ -47,6 +47,14 @@ export default function LoginScreen() {
 
       <Pressable onPress={handleSubmit}>
         <Text>Sign in</Text>
+      </Pressable>
+
+      <Pressable
+        onPress={() => {
+          router.replace("/dashboard/");
+        }}
+      >
+        <Text>Go to dashboard</Text>
       </Pressable>
     </SafeAreaView>
   );

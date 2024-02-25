@@ -22,12 +22,12 @@ export default function DashboardLayout() {
           title: "Access",
         }}
       />
-      <Tabs.Screen
+      {/* <Tabs.Screen
         name="access"
         options={{
           title: "Access",
         }}
-      />
+      /> */}
       <Tabs.Screen
         name="settings"
         options={{
